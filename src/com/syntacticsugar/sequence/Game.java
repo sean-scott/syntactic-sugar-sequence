@@ -6,14 +6,16 @@ public class Game {
 	{
 		// Game starts
 		
-		// Initialize 2 Deck objects
+		// Initialize Deck
 		
-		Deck test = new Deck();
+		new Deck();
+		Deck.deck[16].printCard();
 		
-		test.deck[16].printCard();
+		// Initialize Board
 		
-		
-		// Initialize a Board object
+		new Board();
+		Board.board[0][0].printCard();
+		Board.board[0][2].printCard();
 		
 		// etc...
 

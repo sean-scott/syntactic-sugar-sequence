@@ -70,7 +70,15 @@ public class Card {
 			value = name;
 		}
 		
-		System.out.println(value + " of " + suit);
+		if (value.equals(""))
+		{
+			System.out.println("Free");
+		}
+		
+		else
+		{
+			System.out.println(value + " of " + suit);
+		}
 	}
 
 }
