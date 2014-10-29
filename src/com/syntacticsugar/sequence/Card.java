@@ -80,5 +80,24 @@ public class Card {
 			System.out.println(value + " of " + suit);
 		}
 	}
-
+	
+	// Overloading the "equals" operator for checking Card equality.
+	
+	public boolean equals(Card c)
+	{
+		if (c == null)
+		{
+			return false;
+		}
+		
+		if (this.getName().equals(c.getName()) && this.getSuit().equals(c.getSuit()))
+		{
+			return true;
+		}
+		
+		else
+		{
+			return false;
+		}
+	}
 }

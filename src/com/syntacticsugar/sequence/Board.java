@@ -139,4 +139,46 @@ public class Board {
  		board[9][8] = new Card("2", "Spades");
  		board[9][9] = new Card("", "");
  	}
+ 	
+ 	/* indexOf */
+ 	
+ 	
+ 	public static int[][] indexOf(Card c)
+ 	{
+ 		// Initialize an array. There will be two coordinates where the Card exists on the board
+ 		int[][] arr = new int[2][2];
+ 		
+ 		// Counter to determine which index of 'arr' to use
+ 		int count = 0;
+ 		
+ 		// Loop through the entire Board. If 'c' matches the Card object, put that index in array
+ 		for (int i = 0; i < 10; i++)
+ 		{
+ 			// Row
+ 			
+ 			for (int j = 0; j < 10; j++)
+ 			{
+ 				// Column
+ 				
+ 				if (c.equals(board[i][j]))
+ 				{
+ 					if (count == 0)
+ 					{
+ 						arr[0][0] = i;
+ 						arr[0][1] = j;
+ 					}
+ 					
+ 					else
+ 					{
+ 						arr[1][0] = i;
+ 						arr[1][1] = j;
+ 					}
+ 					
+ 					count++;
+ 				}
+ 			}
+ 		}
+ 		
+ 		return arr;
+ 	}
 }
