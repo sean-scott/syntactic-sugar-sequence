@@ -43,7 +43,34 @@ public class Card {
 	
 	public void printCard()
 	{
-		System.out.println(name + " of " + suit);
+		String value;
+		
+		if (name.equals("A"))
+		{
+			value = "Ace";
+		}
+		
+		else if (name.equals("J"))
+		{
+			value = "Jack";
+		}
+		
+		else if (name.equals("Q"))
+		{
+			value = "Queen";
+		}
+		
+		else if (name.equals("K"))
+		{
+			value = "King";
+		}
+		
+		else
+		{
+			value = name;
+		}
+		
+		System.out.println(value + " of " + suit);
 	}
 
 }
