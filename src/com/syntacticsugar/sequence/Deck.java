@@ -4,6 +4,26 @@ public class Deck extends Card {
 	
 	static Card[] deck = new Card[54];
 
+/*  
+  
+  	private static Card[] deck = new Card[54];
+ 
+  
+ 	public Deck() {
+ 	
+ 		this is where you put all the cards from that main() function down yonder...
+ 	
+ 	}
+ 	
+ 	// no setters required
+ 	
+ 	 
+ 	private Card getDeckItem(index)
+ 	{
+ 		return deck[index];
+ 	}
+
+ */
 
 
 public static void main(String[] args){
