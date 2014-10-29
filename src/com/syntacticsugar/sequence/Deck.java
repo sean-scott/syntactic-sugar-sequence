@@ -1,4 +1,5 @@
 package com.syntacticsugar.sequence;
+import java.util.Random;
 
 public class Deck extends Card {
 	
@@ -147,22 +148,55 @@ public class Deck extends Card {
  		deck[107] = new Card("Joker", "Two");
  		
  	}
- 	/*
+ 	
+ 	// Generates a Hand of six from the Deck for the Player
+ 	// Removes those six cards from the Deck
  	public Card[] generateHand()
  	{
+ 		Card[] hand = new Card[6];
  		// make a Card[] hand
- 		// pick a random number
- 		// assign deck[rand] to card[0]
- 		// increment, repeat. Make sure the random hasn't already been picked
- 		// removeCard() should make this an easy check
  		
- 		// return card array so Player can get it
+ 		Random rand = new Random(System.currentTimeMillis());
+ 		
+ 		int i = 0; int numCards = 0;
+ 		while (numCards < 6){
+ 			
+ 			int min = 0; int max = 107;
+ 			
+ 			int randomCard = rand.nextInt(max + 1) + min;
+ 			// System.out.println(randomCard);
+ 			if (Deck.deck[randomCard].getName() != "null"){
+ 				hand[i] = Deck.deck[randomCard];
+ 				Deck.deck[randomCard].printCard(); // Test printCard statement
+ 				removeCard(randomCard); // This should be working to delete card
+ 				numCards++;
+ 				i++;
+ 			}
+ 			else{
+ 				// Try again!
+ 			}
+ 		}
+ 		
+ 		return hand;
+ 		
  	}
- 	*/
+ 
  	
  	public void removeCard(int index)
  	{
- 		// do something to make the card at that index null
+ 		Deck.deck[index].setName("null");
+ 	}
+ 	
+ 	// Testing.. testing.. 1.. 2..
+ 	public static void main(String[] args){
+ 		
+ 		Deck test = new Deck();
+ 		Card[] myHand = test.generateHand();
+ 		
+ 		
+ 		
+ 		
+ 		
  	}
  	
  	
