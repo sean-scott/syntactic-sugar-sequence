@@ -165,7 +165,7 @@ public class Deck extends Card {
  			
  			int randomCard = rand.nextInt(max + 1) + min;
  			// System.out.println(randomCard);
- 			if (Deck.deck[randomCard].getName() != "null"){
+ 			if (!Deck.deck[randomCard].getName().equals("null")){
  				hand[i] = Deck.deck[randomCard];
  				Deck.deck[randomCard].printCard(); // Test printCard statement
  				removeCard(randomCard); // This should be working to delete card

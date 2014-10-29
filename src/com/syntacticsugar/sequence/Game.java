@@ -8,9 +8,13 @@ public class Game {
 		
 		// Initialize 2 Deck objects
 		
-		Deck test = new Deck();
+		Deck myDeck = new Deck();
 		
-		Deck.deck[16].printCard();
+		// These will print out their hands for now
+		Human human = new Human(myDeck.generateHand());
+		CPU robot = new CPU(myDeck.generateHand());
+		
+		// Deck.deck[16].printCard();
 		
 		
 		// Initialize a Board object
