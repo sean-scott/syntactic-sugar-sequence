@@ -1,5 +1,8 @@
 package com.syntacticsugar.sequence;
 
-public class Deck {
+public class Deck extends Card {
+	
+	
+	// 8=============D
 
 }
