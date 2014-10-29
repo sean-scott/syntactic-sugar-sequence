@@ -5,10 +5,40 @@ public class Card {
 	private String name;
 	private String suit;
 	
-	// hellow an welcum
-	// in this weekz java file
-	// we will b lrning how 2 make a card
+	public Card()
+	{
+		name = "";
+		suit = "";
+	}
 	
-	// It is a simple process, but you may want to speed it up to 1.5x
+	public Card(String n, String s)
+	{
+		name = n;
+		suit = s;
+	}
+	
+	// Set/Get 'name'
+	
+	public void setName(String n)
+	{
+		name = n;
+	}
+	
+	public String getName()
+	{
+		return name;
+	}
+	
+	// Set/Get 'suit'
+	
+	public void setSuit(String s)
+	{
+		suit = s;
+	}
+	
+	public String getSuit()
+	{
+		return suit;
+	}
 
 }
