@@ -1,5 +1,5 @@
 package com.syntacticsugar.sequence;
 
-public class Human {
+public class Human extends Player {
 
 }

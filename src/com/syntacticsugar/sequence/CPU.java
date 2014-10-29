@@ -1,6 +1,6 @@
 package com.syntacticsugar.sequence;
 
-public class CPU {
+public class CPU extends Player {
 
 }
 
