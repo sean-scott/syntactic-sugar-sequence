@@ -2,6 +2,8 @@ package com.syntacticsugar.sequence;
 
 public class Card {
 	
-	// Code from Scott. Testing git commit!
+	// hellow an welcum
+	// in this weekz java file
+	// we will b lrning how 2 make a card
 
 }
