@@ -40,5 +40,10 @@ public class Card {
 	{
 		return suit;
 	}
+	
+	public void printCard()
+	{
+		System.out.println(name + " of " + suit);
+	}
 
 }
