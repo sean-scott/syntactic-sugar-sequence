@@ -2,8 +2,8 @@ package com.syntacticsugar.sequence;
 
 public class Card {
 	
-	private string name;
-	private string suit;
+	private String name;
+	private String suit;
 	
 	// hellow an welcum
 	// in this weekz java file
