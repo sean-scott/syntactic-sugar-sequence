@@ -23,14 +23,14 @@ public class Game {
 		
 		new Board();
 		System.out.println("Testing BoardCard print. Name/Suit and highlight state");
-		Board.board[0][1].printCard();
+		Board.board[2][5].printCard();
 		System.out.println();
 		
-		int[][] spots = Board.indexOf(Deck.deck[44]);
+		int[][] spots = Board.indexOf(Deck.deck[12]);
 				
 		// Testing where the card is. Check the Board class to confirm location
 		System.out.println("Find where the card is equal to the cards on the Board");
-		System.out.println(Deck.deck[44].getName() + "-" + Deck.deck[44].getSuit() + 
+		System.out.println(Deck.deck[12].getName() + "-" + Deck.deck[12].getSuit() + 
 			" is located at (" + spots[0][0] + ", " + spots[0][1] + 
 			") and (" + spots[1][0] + ", " + spots[1][1] + ")");
 		System.out.println();
@@ -47,7 +47,7 @@ public class Game {
 		
 		Board.selectCard(first);
 		System.out.println("Testing BoardCard print. Name/Suit and highlight state");
-		Board.board[0][1].printCard();
+		Board.board[2][5].printCard();
 		System.out.println();
 		
 		
