@@ -2,6 +2,8 @@ package com.syntacticsugar.sequence;
 
 public class Board {
 	
+	//Tommy is Trash
+	
 	// 'board' is a 2D array of Cards. Each card will appear twice
 	// No Jokers, no Jacks. 4 free spaces
 	
