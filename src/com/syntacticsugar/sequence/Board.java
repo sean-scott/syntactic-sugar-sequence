@@ -11,7 +11,7 @@ public class Board
  	public Board() {
  		
  		// Row 1
- 		
+ 		// BoardCard(name, suit, highlighted, enabled);
  		board[0][0] = new BoardCard("", "", true, false);
  		board[0][1] = new BoardCard("6", "Diamonds", false, true);
  		board[0][2] = new BoardCard("7", "Diamonds", false, true);
@@ -184,6 +184,10 @@ public class Board
  		
  		return arr;
  	}
+ 	
+ 	// < selectCard >
+ 	//
+ 	// Make BoardCard highlighted and disabled
  	
  	public static void selectCard(int[] arr)
  	{
