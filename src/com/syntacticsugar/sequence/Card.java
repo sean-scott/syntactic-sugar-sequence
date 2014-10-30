@@ -81,16 +81,16 @@ public class Card {
 		}
 	}
 	
-	// Overloading the "equals" operator for checking Card equality.
+	// Overloading the "equals" operator for checking if Card matches the BoardCard.
 	
-	public boolean equals(Card c)
-	{
-		if (c == null)
+	public boolean equals(BoardCard b)
+	{	
+		if (b == null)
 		{
 			return false;
 		}
 		
-		if (this.getName().equals(c.getName()) && this.getSuit().equals(c.getSuit()))
+		if (this.getName().equals(b.getName()) && this.getSuit().equals(b.getSuit()))
 		{
 			return true;
 		}
