@@ -1,6 +1,8 @@
 package com.syntacticsugar.sequence;
 
-public class Board 
+import javax.swing.JPanel;
+
+public class Board extends JPanel
 {
 	
 	// 'board' is a 2D array of Cards. Each card will appear twice
@@ -9,6 +11,8 @@ public class Board
 	static BoardCard[][] board = new BoardCard[10][10];
 
  	public Board() {
+ 		
+ 		super(); // JPanel constructor
  		
  		// Row 1
  		// BoardCard(name, suit, highlighted, enabled);
@@ -139,6 +143,15 @@ public class Board
  		board[9][7] = new BoardCard("3", "Spades", false, true);
  		board[9][8] = new BoardCard("2", "Spades", false, true);
  		board[9][9] = new BoardCard("", "", true, false);
+ 		
+ 		for (int i = 0; i < 10; i++)
+ 		{
+ 			for (int j = 0; j < 10; j++)
+ 			{
+ 				this.add(board[i][j]); // Displays BoardCards
+ 			}
+ 		}
+
  	}
  	
  	// < indexOf >
@@ -197,4 +210,8 @@ public class Board
  		board[x][y].highlighted = true;
  		board[x][y].enabled = false;
  	}
+ 	
+
+ 	
+ 	
 }

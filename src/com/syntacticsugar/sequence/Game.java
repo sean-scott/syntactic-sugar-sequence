@@ -1,6 +1,10 @@
 package com.syntacticsugar.sequence;
 
-public class Game {
+import java.awt.*;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class Game extends JPanel {
 
 	public static void main(String[] args) 
 	{
@@ -20,7 +24,7 @@ public class Game {
 		
 		
 		// Initalize a Board
-		
+		/*
 		new Board();
 		System.out.println("Testing BoardCard print. Name/Suit and highlight state");
 		Board.board[2][5].printCard();
@@ -50,12 +54,27 @@ public class Game {
 		Board.board[2][5].printCard();
 		System.out.println();
 		
+		*/
 		
 		
 		
 		
+		/****** GUI - DO NOT REMOVE THE FOLLOWING CODE ******/
 		
-		// etc...
+		// Initialize Frame - height, width, color
+		
+		JFrame f = new JFrame("Sequence by Syntactic Sugar, Ltd.");
+		f.setSize(1000,1000);
+		f.setLayout(new BorderLayout());
+		
+		// Create Board
+		
+		Board b = new Board();
+		//b.setSize(100, 100);
+		b.setBackground(Color.BLUE);
+		f.add(b, BorderLayout.CENTER);
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		f.setVisible(true);
 
 	}
 
