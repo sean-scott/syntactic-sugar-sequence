@@ -70,6 +70,7 @@ public class Game extends JPanel {
 		// Create Board
 		
 		Board b = new Board();
+		b.setLayout(new GridLayout(10,10));
 		//b.setSize(100, 100);
 		b.setBackground(Color.BLUE);
 		f.add(b, BorderLayout.CENTER);
