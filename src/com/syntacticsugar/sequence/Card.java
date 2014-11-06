@@ -1,6 +1,7 @@
 package com.syntacticsugar.sequence;
+import javax.swing.*;
 
-public class Card {
+public class Card extends JButton {
 	
 	protected String name;
 	protected String suit;

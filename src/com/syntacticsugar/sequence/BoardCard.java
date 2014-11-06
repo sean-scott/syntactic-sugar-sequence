@@ -1,4 +1,6 @@
 package com.syntacticsugar.sequence;
+import java.awt.*;
+import javax.swing.*;
 
 public class BoardCard extends Card 
 {
@@ -17,6 +19,7 @@ public class BoardCard extends Card
 		super(n, s);
 		highlighted = h;
 		enabled = e;
+		setPreferredSize(new Dimension(40,100));
 	}
 	
 	public void printCard()
