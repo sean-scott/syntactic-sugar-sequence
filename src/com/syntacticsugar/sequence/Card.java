@@ -7,7 +7,7 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
-public class Card extends JComponent implements MouseListener {
+public class Card extends JButton implements MouseListener {
 	
 	protected String name;
 	protected String suit;
