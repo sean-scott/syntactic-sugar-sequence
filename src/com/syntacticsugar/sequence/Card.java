@@ -1,28 +1,15 @@
 package com.syntacticsugar.sequence;
 
-
-import java.awt.Dimension;
-import java.awt.*;
-import java.awt.event.*;
-
-import javax.swing.*;
-
-public class Card extends JButton implements MouseListener {
+public class Card {
 	
 	protected String name;
 	protected String suit;
 
-    private boolean mouseEntered = false;
-    private boolean mousePressed = false;
-	
 	public Card()
 	{
 		super(); // JComponent constructor
 		name = "";
 		suit = "";
-		
-		enableInputMethods(true);
-		addMouseListener(this);
 	}
 	
 	public Card(String n, String s)
@@ -114,93 +101,4 @@ public class Card extends JButton implements MouseListener {
 			return false;
 		}
 	}
-	
-	/****** GUI ******/
-	
-	@Override
-	public Dimension getPreferredSize()
-	{
-		return new Dimension(100, 150);
-	}
-	
-	@Override
-	public Dimension getMinimumSize()
-	{
-		return new Dimension(100, 150);
-	}
-	
-	@Override
-	public Dimension getMaximumSize()
-	{
-		return new Dimension(100, 150);
-	}
-	
-	@Override
-	public void paintComponent(Graphics g)
-	{
-		super.paintComponent(g);
-		
-
-        // Anti-Aliasing
-        Graphics2D antiAlias = (Graphics2D)g;
-        antiAlias.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
-        // Draw white rectangle
-        g.setColor(Color.WHITE);
-        g.fillRoundRect(0, 0, getWidth() - 1, getHeight() - 1, 1, 1); 
-        
-        // Draw border
-        if(mouseEntered)
-        {
-            g.setColor(Color.YELLOW);
-        }
-        else
-        {
-            g.setColor(Color.GREEN);
-        }
-        g.drawRoundRect(0, 0, getWidth() - 1, getHeight() - 1, 10, 10);
-        
-        // Draw name
-
-        JLabel c = new JLabel(name);
-        c.setBounds(getWidth()/3, getHeight()/2, 20, 40);
-        c.paint(g);
-	}
-
-	@Override
-	public void mouseClicked(MouseEvent e) 
-	{
-		// Nothing
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) 
-	{
-        mouseEntered = true;
-        setCursor(new Cursor(Cursor.HAND_CURSOR));
-        repaint();
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) 
-	{
-        mouseEntered = false;
-        setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-        repaint();
-	}
-
-	@Override
-    public void mousePressed(MouseEvent e)
-    {
-        mousePressed = true;
-        repaint();
-    }
-	
-	@Override
-    public void mouseReleased(MouseEvent e)
-    {
-        mousePressed = false;
-        setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-        repaint();
-    }
 }

@@ -1,10 +1,6 @@
 package com.syntacticsugar.sequence;
 
-import java.awt.*;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
-public class Game extends JPanel {
+public class Game {
 
 	public static void main(String[] args) 
 	{
@@ -55,27 +51,6 @@ public class Game extends JPanel {
 		System.out.println();
 		
 		*/
-		
-		
-		
-		
-		/****** GUI - DO NOT REMOVE THE FOLLOWING CODE ******/
-		
-		// Initialize Frame - height, width, color
-		
-		JFrame f = new JFrame("Sequence by Syntactic Sugar, Ltd.");
-		f.setSize(1000,1000);
-		f.setLayout(new BorderLayout());
-		
-		// Create Board
-		
-		Board b = new Board();
-		b.setLayout(new GridLayout(10,10));
-		//b.setSize(100, 100);
-		b.setBackground(Color.BLUE);
-		f.add(b, BorderLayout.CENTER);
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		f.setVisible(true);
 
 	}
 
