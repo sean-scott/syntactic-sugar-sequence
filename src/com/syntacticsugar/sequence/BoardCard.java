@@ -97,6 +97,7 @@ public class BoardCard extends Card
 	public void mouseClicked(MouseEvent e) 
 	{
 		// Nothing
+		System.out.println("CLICK!");
 	}
 
 	@Override
@@ -104,6 +105,7 @@ public class BoardCard extends Card
 	{
         mouseEntered = true;
         setCursor(new Cursor(Cursor.HAND_CURSOR));
+        System.out.println("ENTER");
         repaint();
 	}
 
@@ -112,6 +114,7 @@ public class BoardCard extends Card
 	{
         mouseEntered = false;
         setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        System.out.println("EXIT");
         repaint();
 	}
 
@@ -128,6 +131,7 @@ public class BoardCard extends Card
     {
         mousePressed = false;
         setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        System.out.println("RELEASE");
         repaint();
     }
 }

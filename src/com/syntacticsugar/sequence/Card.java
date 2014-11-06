@@ -193,7 +193,6 @@ public class Card extends JButton implements MouseListener {
     public void mousePressed(MouseEvent e)
     {
         mousePressed = true;
-        System.out.println("WHO CLICKED ME?!?!");
         repaint();
     }
 	
