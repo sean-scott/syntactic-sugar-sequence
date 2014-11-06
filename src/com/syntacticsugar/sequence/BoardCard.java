@@ -21,6 +21,11 @@ public class BoardCard extends Card
 		enabled = e;
 		setPreferredSize(new Dimension(75,75));
 		setText(n);
+		
+		if (s == "Diamonds" || s == "Hearts")
+		{
+			setForeground(Color.RED);
+		}
 	}
 	
 	public void printCard()
