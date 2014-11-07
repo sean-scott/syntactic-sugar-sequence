@@ -33,6 +33,7 @@ public class Game {
 		b.setLayout(new GridLayout(10,10));
 		//b.setPreferredSize(new Dimension(600,1000));
 		f.add(b);
+		
 		//f.add(Hand);
 		//ImageIcon cardPicture;
 

@@ -1,8 +1,9 @@
 package com.syntacticsugar.sequence;
 import java.awt.*;
-import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class BoardCard extends Card 
+public class BoardCard extends Card
 {
 	public boolean highlighted; // If true, highlights BoardCard
 	public boolean enabled; // If true, BoardCard can be selected
@@ -20,12 +21,6 @@ public class BoardCard extends Card
 		highlighted = h;
 		enabled = e;
 		setPreferredSize(new Dimension(75,75));
-		setText(n);
-		
-		if (s == "Diamonds" || s == "Hearts")
-		{
-			setForeground(Color.RED);
-		}
 	}
 	
 	public void printCard()
