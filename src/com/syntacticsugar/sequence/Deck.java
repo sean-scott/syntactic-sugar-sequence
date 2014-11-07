@@ -1,14 +1,13 @@
 package com.syntacticsugar.sequence;
 import java.util.Random;
 
-public class Deck extends Card {
-	
-	
+public class Deck extends Card 
+{	
 	// 'deck' contains two full sets of cards, plus Jokers.
 	static Card[] deck = new Card[108];
 
- 	public Deck() {
- 		
+ 	public Deck() 
+ 	{	
  		// Clubs - 1
  		
  		deck[0] = new Card("A", "Clubs");
@@ -154,50 +153,30 @@ public class Deck extends Card {
  	public Card[] generateHand()
  	{
  		Card[] hand = new Card[6];
- 		// make a Card[] hand
- 		
  		Random rand = new Random(System.currentTimeMillis());
  		
  		int i = 0; int numCards = 0;
- 		while (numCards < 6){
- 			
+ 		while (numCards < 6)
+ 		{
  			int min = 0; int max = 107;
- 			
  			int randomCard = rand.nextInt(max + 1) + min;
- 			// System.out.println(randomCard);
- 			if (!Deck.deck[randomCard].getName().equals("null")){
+
+ 			if (!Deck.deck[randomCard].getName().equals("null"))
+ 			{
  				hand[i] = Deck.deck[randomCard];
  				Deck.deck[randomCard].printCard(); // Test printCard statement
  				removeCard(randomCard); // This should be working to delete card
  				numCards++;
  				i++;
  			}
- 			else{
- 				// Try again!
- 			}
  		}
  		
  		return hand;
  		
  	}
- 
  	
  	public void removeCard(int index)
  	{
  		Deck.deck[index].setName("null");
  	}
- 	
- 	// Testing.. testing.. 1.. 2..
- 	public static void main(String[] args){
- 		
- 		Deck test = new Deck();
- 		Card[] myHand = test.generateHand();
- 		
- 		
- 		
- 		
- 		
- 	}
- 	
- 	
 }

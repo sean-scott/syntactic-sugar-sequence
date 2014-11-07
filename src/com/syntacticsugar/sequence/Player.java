@@ -4,8 +4,8 @@ import javax.swing.*;
 
 import java.util.Random;
 
-public class Player extends JPanel {
-	
+public class Player extends JPanel 
+{
 	Card[] hand = new Card[6];
 	
 	public Player(Card[] hand){
@@ -18,16 +18,27 @@ public class Player extends JPanel {
 		}
 	}
 	
-	public Player(){
-		
-		
-		
+	public Player()
+	{	
 	}
-	
-	public Card selectCard(int index){
-		return hand[index]; //Best I could do
+	/* Card is selected from Card.java. This may need to be modified to un-highlight other cards
+	public void selectCard()
+	{	
+		for (int i = 0; i < 6; i++)
+		{
+			if (hand[i].selected)
+			{
+				System.out.println(i);
+			}
+			
+			else
+			{
+				System.out.println(i);
+				hand[i].selected = false;
+			}
+		}
 	}
-	
+	*/
 	public void removeCard(int index){
 		hand[index].setName("null"); //Follows same principal as deck's remove method
 	}

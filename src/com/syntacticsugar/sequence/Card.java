@@ -10,20 +10,24 @@ import javax.swing.*;
 
 public class Card extends JButton {
 	
-	protected String name;
-	protected String suit;
+	private String name;
+	private String suit;
+	
+	public boolean selected; // Allows user to clearly see what card is currently in use
 
 	public Card()
 	{
 		super(); // JComponent constructor
 		name = "";
 		suit = "";
+		selected = false;
 	}
 	
 	public Card(String n, String s)
 	{
 		name = n;
 		suit = s;
+		selected = false;
 		
 		/***** UNIVERSAL GUI *****/
 		
@@ -37,39 +41,37 @@ public class Card extends JButton {
 		Font font = new Font(getFont().getName(), getFont().getStyle(), 20);
 		setFont(font);
 		
-		if (n == "Joker")
+		if (name == "Joker")
 		{
 			setText("\u265B");
 		}
 		
-		if (s == "Clubs")
+		if (suit == "Clubs")
 		{
-			setText(n + " \u2663");
+			setText(name + " \u2663");
 		}
 		
-		if (s == "Diamonds")
+		if (suit == "Diamonds")
 		{
-			setText(n + " \u2666");
+			setText(name + " \u2666");
 			setForeground(Color.RED);
 		}
 		
-		if (s == "Hearts")
+		if (suit == "Hearts")
 		{
-			setText(n + " \u2665");
+			setText(name + " \u2665");
 			setForeground(Color.RED);
 		}
 		
-		if (s == "Spades")
+		if (suit == "Spades")
 		{
-			setText(n + " \u2660");
+			setText(name + " \u2660");
 		}
 		
-		if (s == "")
+		if (suit == "")
 		{
 			setText("\u2605");
 		}
-		
-		
 		
 		setPreferredSize(new Dimension(90,130));
 		
@@ -78,7 +80,7 @@ public class Card extends JButton {
 		
 		// Set enabled state
 		// You will never click the free space
-		if (s == "")
+		if (suit == "")
 		{
 			setEnabled(false);
 		}
@@ -97,7 +99,8 @@ public class Card extends JButton {
             public void actionPerformed(ActionEvent e)
             {
                 // When clicked how name and suit
-                System.out.println("You selected the " + n + " of " + s);
+                System.out.println("You selected the " + n + " of " + suit);
+                selectCard();
             }
         });
 	}
@@ -166,8 +169,23 @@ public class Card extends JButton {
 		}
 	}
 	
-	// Overloading the "equals" operator for checking if Card matches the BoardCard.
+	// selectCard - highlight
 	
+	public void selectCard()
+	{
+		if (selected)
+        {
+        	selected = false;
+        	setBackground(Color.WHITE);
+        }
+        else
+        {
+        	selected = true;
+        	setBackground(Color.YELLOW);
+        }
+	}
+	
+	// Overloading the "equals" operator for checking if Card matches the BoardCard.
 	public boolean equals(BoardCard b)
 	{	
 		if (b == null)
