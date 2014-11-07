@@ -1,8 +1,10 @@
 package com.syntacticsugar.sequence;
 
+import javax.swing.*;
+
 import java.util.Random;
 
-public class Player {
+public class Player extends JPanel {
 	
 	Card[] hand = new Card[6];
 	
@@ -10,9 +12,10 @@ public class Player {
 		
 		this.hand = hand;
 		
-		
-		
-		
+		for (int i = 0; i < 6; i++)
+		{
+			this.add(hand[i]);
+		}
 	}
 	
 	public Player(){

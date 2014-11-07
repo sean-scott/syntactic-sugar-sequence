@@ -21,6 +21,9 @@ public class BoardCard extends Card
 		highlighted = h;
 		enabled = e;
 		setPreferredSize(new Dimension(75,75));
+		
+		Font font = new Font(getFont().getName(), getFont().getStyle(), 16);
+		setFont(font);
 	}
 	
 	public void printCard()

@@ -1,6 +1,7 @@
 package com.syntacticsugar.sequence;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -33,8 +34,13 @@ public class Card extends JButton {
 
 		// Show value & suit (uses Unicode)
 		
-		Font font = new Font(getFont().getName(), getFont().getStyle(), 16);
+		Font font = new Font(getFont().getName(), getFont().getStyle(), 20);
 		setFont(font);
+		
+		if (n == "Joker")
+		{
+			setText("\u265B");
+		}
 		
 		if (s == "Clubs")
 		{
@@ -62,6 +68,10 @@ public class Card extends JButton {
 		{
 			setText("\u2605");
 		}
+		
+		
+		
+		setPreferredSize(new Dimension(90,130));
 		
 		
 		/***** ACTION *****/

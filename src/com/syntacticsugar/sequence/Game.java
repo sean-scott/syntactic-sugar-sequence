@@ -9,40 +9,34 @@ public class Game {
 
 	public static void main(String[] args) 
 	{
-		// Game starts
+		// Frame - the main window that holds everything
 		
-		// Initialize a Deck
-		
-		new Deck();
-		System.out.println("Testing Card print. Name and suit");
-		Deck.deck[44].printCard();
-		System.out.println();
-		
-		
-		JFrame f = new JFrame();
+		JFrame f = new JFrame("Sequence!");
 		f.setLayout(new FlowLayout());
-		Board b = new Board();
-		//JPanel Hand = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		//h.setSize(300,100);
-		
-		
-		//super("Sequence");
 		f.setSize(1000,1000);
 		f.setResizable(false);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		// Board - the 10x10 grid of cards to make a sequence
+		
+		Board b = new Board();
 		b.setLayout(new GridLayout(10,10));
-		//b.setPreferredSize(new Dimension(600,1000));
+		b.setBorder(BorderFactory.createMatteBorder(8, 8, 8, 8, Color.GRAY));
+		
+		
+		// Generate Deck (non-GUI)
+		Deck d = new Deck();
+		
+		// Player - the 1x6 grid of cards that show player's current hand
+		
+		Player p = new Player(d.generateHand());
+		p.setLayout(new GridLayout(1,6));
+		p.setBorder(BorderFactory.createMatteBorder(8, 8, 8, 8, Color.BLACK));
+		
+		// Adding everything to Frame
+		
 		f.add(b);
-		
-		//f.add(Hand);
-		//ImageIcon cardPicture;
-
-		
-		
+		f.add(p, BorderLayout.PAGE_END);		
 		f.setVisible(true);
-		
-		
-
 	}
-
 }
