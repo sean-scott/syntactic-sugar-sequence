@@ -44,9 +44,72 @@ public class CPU extends Player {
 		}
 	}
 	
+	public boolean checkFTW (Card c, BoardCard[][] b, String direction){
+		int row = 1, block = 0, i = 0 , j = 0;
+		//Row will count the sequence
+		//block will count the number of invalid spaces
+		//i and j are supposed to be the indexes
+		
+		while(row < 5 && block != 2 ){
+			
+			//This is a reset
+			if(block > 0){
+				i = 0;
+				j = 0;
+			}
+			
+			//Check up then down
+			if(direction == "ud" && block == 0){
+				i++;
+			}else if (direction == "ud" && block != 0){
+				i--;
+				
+			//Check right then left	
+			}else if (direction == "rl" && block == 0){
+				j++;
+			}else if (direction == "rl"&& block != 0){
+				j--;
+				
+			//Check down-right then up-left
+			}else if (direction == "drul" && block == 0){
+				i++;
+				j++;
+			}else if (direction == "drul" && block != 0){
+				i--;
+				j--;
+				
+			//Check up-right then down-left	
+			}else if (direction == "urdl" && block == 0){
+				i--;
+				j++;
+			}else if (direction == "urdl" && block != 0){
+				i++;
+				j--;
+			}
+			
+			if(i < 0 || j < 0 || i > 9 || j > 9){
+				block ++;
+			}else if(b[i][j].highlighted == true){
+				row++;
+			}else{
+				block++;
+			}
+		}
+		
+		if(row == 5){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
 	public void turn()
 	{
+		//Win
 		
+		//Block
+		
+		//Play
 	}
 
 }
