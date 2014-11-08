@@ -23,7 +23,7 @@ public class Game {
 	{
 		/***** GUI *****/
 		
-		// Frame - the main window that holds everything
+		// Frame - the main window that holds everything.
 		
 		JFrame f = new JFrame("Sequence!");
 		f.setLayout(new FlowLayout());
