@@ -58,18 +58,73 @@ public class Game {
 		f.add(p, BorderLayout.PAGE_END);		
 		f.setVisible(true);
 		
+
 		for (int i = 0; i < 6; i++)
 		{
+			int j = i;
+			
 			p.hand[i].addActionListener(new ActionListener()
 			{
+
+				// A card was selected from the hand
+				
 				@Override
 				public void actionPerformed(ActionEvent e) 
 				{
-					System.out.println("WOW");
-					System.out.println(e.getSource().getClass());
+					// Enable the current cards on the board (if not already highlighted)
 					
+					int spots[][] = Board.indexOf(p.hand[j]);
+					
+			 		System.out.println("Find where the card is equal to the cards on the Board");
+			 		System.out.println(p.hand[j].getName() + "-" + p.hand[j].getSuit() + 
+			 			" is located at (" + spots[0][0] + ", " + spots[0][1] + 
+			 			") and (" + spots[1][0] + ", " + spots[1][1] + ")");
+			 		System.out.println();
+			 		
+			 		int first[] = new int[2]; // location of first card
+			 		int second[] = new int[2]; // location of second card
+			 		
+			 		first[0] = spots[0][0];
+			 		first[1] = spots[0][1];
+			 		
+			 		second[0] = spots[1][0];
+			 		second[1] = spots[1][1];
+			 		
+			 		if (!b.board[first[0]][first[1]].highlighted)
+			 		{
+				 		b.board[first[0]][first[1]].setEnabled(true);	
+			 		}
+			 		
+			 		if (!b.board[second[0]][second[1]].highlighted)
+			 		{
+				 		b.board[second[0]][second[1]].setEnabled(true);	
+			 		}
 				}
 				});
+		}
+		
+		for (int i = 0; i < 10; i++)
+		{
+			for (int j = 0; j < 10; j++)
+			{
+				int x = i;
+				int y = j;
+				
+				b.board[i][j].addActionListener(new ActionListener()
+				{
+					// A BoardCard was selected
+					
+					@Override
+					public void actionPerformed(ActionEvent e) 
+					{
+						b.board[x][y].highlighted = true;
+						
+						b.board[x][y].setBackground(Color.BLUE);
+						
+						b.board[x][y].setEnabled(false);
+					}
+				});
+			}
 		}
 		
 		/***** LOGIC *****/
