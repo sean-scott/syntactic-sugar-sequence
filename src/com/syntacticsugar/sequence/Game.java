@@ -61,7 +61,7 @@ public class Game {
 
 		for (int i = 0; i < 6; i++)
 		{
-			int j = i;
+			int x = i;
 			
 			p.hand[i].addActionListener(new ActionListener()
 			{
@@ -73,10 +73,10 @@ public class Game {
 				{
 					// Enable the current cards on the board (if not already highlighted)
 					
-					int spots[][] = Board.indexOf(p.hand[j]);
+					int spots[][] = Board.indexOf(p.hand[x]);
 					
 			 		System.out.println("Find where the card is equal to the cards on the Board");
-			 		System.out.println(p.hand[j].getName() + "-" + p.hand[j].getSuit() + 
+			 		System.out.println(p.hand[x].getName() + "-" + p.hand[x].getSuit() + 
 			 			" is located at (" + spots[0][0] + ", " + spots[0][1] + 
 			 			") and (" + spots[1][0] + ", " + spots[1][1] + ")");
 			 		System.out.println();
@@ -90,16 +90,39 @@ public class Game {
 			 		second[0] = spots[1][0];
 			 		second[1] = spots[1][1];
 			 		
-			 		if (!b.board[first[0]][first[1]].highlighted)
-			 		{	
-				 		b.board[first[0]][first[1]].mark();
-				 		
+			 		
+			 		// Select any card with Jack
+			 		
+			 		if (p.hand[x].getName().equals("J"))
+			 		{
+			 			for (int i = 0; i < 10; i++)
+			 			{
+			 				for (int j = 0; j < 10; j++)
+			 				{
+			 					if (!b.board[i][j].highlighted)
+			 					{
+			 						b.board[i][j].mark();
+			 					}
+			 				}
+			 			}
 			 		}
 			 		
-			 		if (!b.board[second[0]][second[1]].highlighted)
+			 		// Any card that isn't a Jack (just show that specific card)
+			 		
+			 		else
 			 		{
-				 		b.board[second[0]][second[1]].mark();
+			 			if (!b.board[first[0]][first[1]].highlighted)
+			 			{	
+			 				b.board[first[0]][first[1]].mark();
+			 			}
+			 		
+			 			if (!b.board[second[0]][second[1]].highlighted)
+			 			{
+			 				b.board[second[0]][second[1]].mark();
+			 			}
 			 		}
+			 		
+			 		
 			 		
 			 		for (int i = 0; i < 10; i++)
 			 		{
