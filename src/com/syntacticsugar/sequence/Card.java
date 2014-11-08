@@ -27,53 +27,8 @@ public class Card extends JButton {
 		name = n;
 		suit = s;
 		selected = false;
-		
-		/***** UNIVERSAL GUI *****/
-		
-		// Card background
-		
-		setBackground(Color.WHITE);
-		setOpaque(true);
-
-		// Show value & suit (uses Unicode)
-		
-		Font font = new Font(getFont().getName(), getFont().getStyle(), 20);
-		setFont(font);
-		
-		if (name == "Joker")
-		{
-			setText("\u265B");
-		}
-		
-		if (suit == "Clubs")
-		{
-			setText(name + " \u2663");
-		}
-		
-		if (suit == "Diamonds")
-		{
-			setText(name + " \u2666");
-			setForeground(Color.RED);
-		}
-		
-		if (suit == "Hearts")
-		{
-			setText(name + " \u2665");
-			setForeground(Color.RED);
-		}
-		
-		if (suit == "Spades")
-		{
-			setText(name + " \u2660");
-		}
-		
-		if (suit == "")
-		{
-			setText("\u2605");
-		}
-		
-		setPreferredSize(new Dimension(90,130));
-		
+		// GUI
+		updateCard();
 		
 		/***** ACTION *****/
 		
@@ -169,29 +124,55 @@ public class Card extends JButton {
 		}
 	}
 	
-	// selectCard - highlight
-	/*
-	public void selectCard()
+	// GUI function
+	public void updateCard()
 	{
+		// Card background
 		
-		BoardCard bc = new BoardCard(name, suit, true, true);
-		if (selected)
-        {
-        	selected = false;
-        	setBackground(Color.WHITE);
-        }
-        else
-        {
-        	selected = true;
-        	setBackground(Color.YELLOW);
-        	int[][] cardLocations = Board.indexOf(new Card(name,suit));
-        	int x = cardLocations[0][0];
-        	int y = cardLocations[0][1];
-        	System.out.println(x);
-        	Board.board[5][5].highlight(); // Random for now
-        }
+		setBackground(Color.WHITE);
+		setOpaque(true);
+
+		// Show value & suit (uses Unicode)
+		
+		Font font = new Font(getFont().getName(), getFont().getStyle(), 20);
+		setFont(font);
+		
+		if (name == "Joker")
+		{
+			setText("\u265B");
+		}
+		
+		if (suit == "Clubs")
+		{
+			setText(name + " \u2663");
+		}
+		
+		if (suit == "Diamonds")
+		{
+			setText(name + " \u2666");
+			setForeground(Color.RED);
+		}
+		
+		if (suit == "Hearts")
+		{
+			setText(name + " \u2665");
+			setForeground(Color.RED);
+		}
+		
+		if (suit == "Spades")
+		{
+			setText(name + " \u2660");
+		}
+		
+		if (suit == "")
+		{
+			setText("\u2605");
+		}
+		
+		setPreferredSize(new Dimension(90,130));
 	}
-	*/
+	
+	
 	// Overloading the "equals" operator for checking if Card matches the BoardCard.
 	public boolean equals(BoardCard b)
 	{	
