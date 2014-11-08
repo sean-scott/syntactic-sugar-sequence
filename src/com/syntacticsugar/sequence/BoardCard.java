@@ -20,7 +20,7 @@ public class BoardCard extends Card
 		super(n, s);
 		highlighted = h;
 		enabled = e;
-		setPreferredSize(new Dimension(75,75));
+		setPreferredSize(new Dimension(65,65));
 		setEnabled(e);
 		
 		if (h)

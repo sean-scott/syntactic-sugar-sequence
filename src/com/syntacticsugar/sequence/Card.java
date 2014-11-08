@@ -1,7 +1,6 @@
 package com.syntacticsugar.sequence;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -10,24 +9,19 @@ import javax.swing.*;
 
 public class Card extends JButton {
 	
-	private String name;
-	private String suit;
-	
-	public boolean selected; // Allows user to clearly see what card is currently in use
+	protected String name;
+	protected String suit;
 
 	public Card()
 	{
 		super(); // JComponent constructor
 		name = "";
 		suit = "";
-		selected = false;
 	}
-	
 	public Card(String n, String s)
 	{
 		name = n;
 		suit = s;
-		selected = false;
 		
 		/***** UNIVERSAL GUI *****/
 		
@@ -38,49 +32,42 @@ public class Card extends JButton {
 
 		// Show value & suit (uses Unicode)
 		
-		Font font = new Font(getFont().getName(), getFont().getStyle(), 20);
+		Font font = new Font(getFont().getName(), getFont().getStyle(), 16);
 		setFont(font);
 		
-		if (name == "Joker")
+		if (s == "Clubs")
 		{
-			setText("\u265B");
+			setText(n + " \u2663");
 		}
 		
-		if (suit == "Clubs")
+		if (s == "Diamonds")
 		{
-			setText(name + " \u2663");
-		}
-		
-		if (suit == "Diamonds")
-		{
-			setText(name + " \u2666");
+			setText(n + " \u2666");
 			setForeground(Color.RED);
 		}
 		
-		if (suit == "Hearts")
+		if (s == "Hearts")
 		{
-			setText(name + " \u2665");
+			setText(n + " \u2665");
 			setForeground(Color.RED);
 		}
 		
-		if (suit == "Spades")
+		if (s == "Spades")
 		{
-			setText(name + " \u2660");
+			setText(n + " \u2660");
 		}
 		
-		if (suit == "")
+		if (s == "")
 		{
 			setText("\u2605");
 		}
-		
-		setPreferredSize(new Dimension(90,130));
 		
 		
 		/***** ACTION *****/
 		
 		// Set enabled state
 		// You will never click the free space
-		if (suit == "")
+		if (s == "")
 		{
 			setEnabled(false);
 		}
@@ -99,8 +86,7 @@ public class Card extends JButton {
             public void actionPerformed(ActionEvent e)
             {
                 // When clicked how name and suit
-                System.out.println("You selected the " + n + " of " + suit);
-                selectCard();
+                System.out.println("You selected the " + n + " of " + s);
             }
         });
 	}
@@ -169,23 +155,8 @@ public class Card extends JButton {
 		}
 	}
 	
-	// selectCard - highlight
-	
-	public void selectCard()
-	{
-		if (selected)
-        {
-        	selected = false;
-        	setBackground(Color.WHITE);
-        }
-        else
-        {
-        	selected = true;
-        	setBackground(Color.YELLOW);
-        }
-	}
-	
 	// Overloading the "equals" operator for checking if Card matches the BoardCard.
+	
 	public boolean equals(BoardCard b)
 	{	
 		if (b == null)
