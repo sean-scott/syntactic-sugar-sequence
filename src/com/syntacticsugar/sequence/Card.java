@@ -92,7 +92,7 @@ public class Card extends JButton {
 		
 		
 		// Console output for now, more later...
-		
+		/*
 		addActionListener(new ActionListener() 
 		{
             public void actionPerformed(ActionEvent e)
@@ -102,6 +102,7 @@ public class Card extends JButton {
                 selectCard();
             }
         });
+        */
 	}
 	
 	// Set/Get 'name'
@@ -169,7 +170,7 @@ public class Card extends JButton {
 	}
 	
 	// selectCard - highlight
-	
+	/*
 	public void selectCard()
 	{
 		
@@ -190,7 +191,7 @@ public class Card extends JButton {
         	Board.board[5][5].highlight(); // Random for now
         }
 	}
-	
+	*/
 	// Overloading the "equals" operator for checking if Card matches the BoardCard.
 	public boolean equals(BoardCard b)
 	{	

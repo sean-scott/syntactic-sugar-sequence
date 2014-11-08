@@ -66,6 +66,7 @@ public class Game {
 				public void actionPerformed(ActionEvent e) 
 				{
 					System.out.println("WOW");
+					System.out.println(e.getSource().getClass());
 					
 				}
 				});
