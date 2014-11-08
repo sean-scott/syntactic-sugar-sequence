@@ -59,21 +59,17 @@ public class Player extends JPanel
 		
 	}
 
-	public void drawCard(){ 
+	public int drawCard(int index){ 
 		
 		Random rand = new Random(System.currentTimeMillis());
  		
- 		int min = 0; int max = 107;
+ 		int min = 0; int max = 107; int j;
  		
  		//Will find the removed card and replace it with a random card from the deck
-		for(int j = 0; j < 6; j++){ 
-			
-			if (hand[j] == (null)){
-	 				hand[j] = Deck.deck[rand.nextInt(max + 1) + min];
-			}
+		
+	 				hand[index] = Deck.deck[rand.nextInt(max + 1) + min];
+	 				return index;
 
-	 	
-		}
 	}
 	
 	// hellowwwww... I hit my elbow

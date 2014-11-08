@@ -154,10 +154,12 @@ public class Game {
 					public void actionPerformed(ActionEvent e) 
 					{
 						b.board[x][y].highlight();
-						p.removeCard(p.indexOf(b.board[x][y]));
-						p.drawCard();
+						p.drawCard(p.indexOf(b.board[x][y])); // :(
+						p.hand[p.drawCard(p.indexOf(b.board[x][y]))].setText("hi"); // :(
+						
 						p.repaint();
 						p.revalidate();
+
 					}
 				});
 			}
