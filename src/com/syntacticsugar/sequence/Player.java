@@ -67,12 +67,10 @@ public class Player extends JPanel
  		
  		//Will find the removed card and replace it with a random card from the deck
 		for(int j = 0; j < 6; j++){ 
-
-				
-				int randomCard = rand.nextInt(max + 1) + min;
-				
-
-	 				hand[j] = Deck.deck[randomCard];
+			
+			if (hand[j] == (null)){
+	 				hand[j] = Deck.deck[rand.nextInt(max + 1) + min];
+			}
 
 	 	
 		}
