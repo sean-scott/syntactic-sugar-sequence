@@ -71,6 +71,10 @@ public class Game {
 				@Override
 				public void actionPerformed(ActionEvent e) 
 				{
+					// What index is it?
+					
+					System.out.println("Index of card in hand: " + x);
+					
 					// Enable the current cards on the board (if not already highlighted)
 					
 					int spots[][] = Board.indexOf(p.hand[x]);
@@ -152,14 +156,18 @@ public class Game {
 					
 					@Override
 					public void actionPerformed(ActionEvent e) 
-					{
-						b.board[x][y].highlight();
-						p.drawCard(p.indexOf(b.board[x][y])); // :(
-						p.hand[p.drawCard(p.indexOf(b.board[x][y]))].setText("hi"); // :(
+					{	
+						// Highlight selected BoardCard
 						
-						p.repaint();
-						p.revalidate();
-
+						b.board[x][y].highlight();
+						
+						// Get index of selected BoardCard to replace card from hand
+						
+						int index = p.indexOf(b.board[x][y]);
+						
+						// Draw new card from deck, replaces selected card from hand
+						// Should update GUI from within function
+						p.drawCard(index);
 					}
 				});
 			}

@@ -2,6 +2,7 @@ package com.syntacticsugar.sequence;
 
 import javax.swing.*;
 
+import java.awt.Color;
 import java.util.Random;
 
 public class Player extends JPanel 
@@ -59,19 +60,28 @@ public class Player extends JPanel
 		
 	}
 
-	public int drawCard(int index){ 
-		
+	public void drawCard(int index)
+	{ 
 		Random rand = new Random(System.currentTimeMillis());
  		
- 		int min = 0; int max = 107; int j;
+ 		int min = 0; int max = 107;
  		
- 		//Will find the removed card and replace it with a random card from the deck
-		
-	 				hand[index] = Deck.deck[rand.nextInt(max + 1) + min];
-	 				return index;
-
+ 		// Replace removed card with a random card from the deck
+	 	hand[index] = Deck.deck[rand.nextInt(max + 1) + min];
+	 	
+	 	removeAll();
+	 	//remove(hand[index]);
+	 	
+	 	System.out.println("Your hand is now: ");
+	 	
+	 	for (int i = 0; i < 6; i++)
+	 	{
+	 		add(hand[i]);
+	 		
+	 		hand[i].printCard();
+	 	}
+	 	
+	 	revalidate();
+	 	repaint();	
 	}
-	
-	// hellowwwww... I hit my elbow
-
 }
