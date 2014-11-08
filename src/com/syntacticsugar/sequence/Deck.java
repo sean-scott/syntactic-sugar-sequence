@@ -177,6 +177,6 @@ public class Deck extends Card
  	
  	public void removeCard(int index)
  	{
- 		Deck.deck[index].setName("null");
+ 		Deck.deck[index] = null;
  	}
 }
