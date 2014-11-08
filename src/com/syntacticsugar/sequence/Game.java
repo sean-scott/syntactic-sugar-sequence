@@ -154,6 +154,10 @@ public class Game {
 					public void actionPerformed(ActionEvent e) 
 					{
 						b.board[x][y].highlight();
+						p.removeCard(p.indexOf(b.board[x][y]));
+						p.drawCard();
+						p.repaint();
+						p.revalidate();
 					}
 				});
 			}
