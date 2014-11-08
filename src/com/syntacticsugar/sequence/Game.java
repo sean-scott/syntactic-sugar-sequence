@@ -91,13 +91,14 @@ public class Game {
 			 		second[1] = spots[1][1];
 			 		
 			 		if (!b.board[first[0]][first[1]].highlighted)
-			 		{
-				 		b.board[first[0]][first[1]].setEnabled(true);	
+			 		{	
+				 		b.board[first[0]][first[1]].mark();
+				 		
 			 		}
 			 		
 			 		if (!b.board[second[0]][second[1]].highlighted)
 			 		{
-				 		b.board[second[0]][second[1]].setEnabled(true);	
+				 		b.board[second[0]][second[1]].mark();
 			 		}
 				}
 				});
@@ -117,11 +118,7 @@ public class Game {
 					@Override
 					public void actionPerformed(ActionEvent e) 
 					{
-						b.board[x][y].highlighted = true;
-						
-						b.board[x][y].setBackground(Color.BLUE);
-						
-						b.board[x][y].setEnabled(false);
+						b.board[x][y].highlight();
 					}
 				});
 			}

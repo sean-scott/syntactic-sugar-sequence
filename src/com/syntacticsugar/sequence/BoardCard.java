@@ -43,12 +43,16 @@ public class BoardCard extends Card
 		System.out.printf("Is this card enabled? %b\n", enabled);
 	}
 	
-	public void highlight(){
-		
+	public void highlight()
+	{	
 		highlighted = true;
-		setEnabled(true);
+		setEnabled(false);
 		setBackground(Color.BLUE);
-		
-		
+	}
+	
+	public void mark()
+	{
+		setEnabled(true);
+		setBackground(Color.YELLOW);
 	}
 }
