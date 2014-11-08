@@ -40,7 +40,7 @@ public class Player extends JPanel
 	}
 	*/
 	public void removeCard(int index){
-		hand[index].setName("null"); //Follows same principal as deck's remove method
+		hand[index] = null; //Follows same principal as deck's remove method
 	}
 	
 
@@ -59,7 +59,7 @@ public class Player extends JPanel
 				//Copied from the generate hand method to pull from the deck
 	 			if (!Deck.deck[randomCard].getName().equals("null")){
 	 				hand[j] = Deck.deck[randomCard];
-	 				removeCard(randomCard);
+	 				this.removeCard(randomCard);
 	 			}
 			}
 		}
