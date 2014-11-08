@@ -6,9 +6,23 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Game {
+	
+	public static boolean humanTurn()
+	{
+		return false;
+	}
+	
+	public static boolean computerTurn()
+	{
+		
+		
+		return false;
+	}
 
 	public static void main(String[] args) 
 	{
+		/***** GUI *****/
+		
 		// Frame - the main window that holds everything
 		
 		JFrame f = new JFrame("Sequence!");
@@ -50,7 +64,31 @@ public class Game {
 		// 5) Allow user to choose the BoardCard, or select another card from hand
 		// 6) Repeat...
 		
+		// TURN LOGIC
 		
+		boolean gameOver = false;
+		
+		boolean humanWon = false;
+		boolean computerWon = false;
+		
+		while (!gameOver)
+		{
+			humanWon = humanTurn();
+			
+			if (humanWon)
+			{
+				System.out.println("Human wins!");
+				gameOver = true;
+			}
+			
+			else
+			{
+				computerWon = computerTurn();
+				
+				System.out.println("Computer wins");
+				gameOver = true;
+			}
+		}
 		
 		
 		
