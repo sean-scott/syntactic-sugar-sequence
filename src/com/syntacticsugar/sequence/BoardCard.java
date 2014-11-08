@@ -59,6 +59,15 @@ public class BoardCard extends Card
 	public void unmark()
 	{
 		setEnabled(false);
-		setBackground(Color.WHITE);
+		
+		if (highlighted)
+		{
+			setBackground(Color.BLUE);
+		}
+		
+		else
+		{
+			setBackground(Color.WHITE);
+		}
 	}
 }
