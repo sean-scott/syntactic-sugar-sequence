@@ -161,7 +161,7 @@ public class Deck extends Card
  			int min = 0; int max = 107;
  			int randomCard = rand.nextInt(max + 1) + min;
 
- 			if (!Deck.deck[randomCard].getName().equals("null"))
+ 			if (!(Deck.deck[randomCard] == null))
  			{
  				hand[i] = Deck.deck[randomCard];
  				Deck.deck[randomCard].printCard(); // Test printCard statement
