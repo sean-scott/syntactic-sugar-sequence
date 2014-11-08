@@ -197,6 +197,25 @@ public class Board extends JPanel
  		
  		return arr;
  	}
+ 	
+ 	// Don't use these yet
+ 	public static int indexOfX(){
+ 		 
+ 		int x = 0;
+ 		
+ 		
+ 		return x;
+ 		
+ 	}
+ 	
+ 	public static int indexOfY(){
+ 		
+ 		int y = 0;
+ 		
+ 		
+ 		return y;
+ 		
+ 	}
  	/*
  	// < openCard >
  	//

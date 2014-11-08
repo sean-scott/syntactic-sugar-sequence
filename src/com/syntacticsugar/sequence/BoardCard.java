@@ -13,7 +13,10 @@ public class BoardCard extends Card
 		super("", "");
 		highlighted = false;
 		enabled = true;
+		
+		
 	}
+	
 	
 	public BoardCard(String n, String s, boolean h, boolean e)
 	{
@@ -38,5 +41,14 @@ public class BoardCard extends Card
 		super.printCard();
 		System.out.printf("Has it already been selected? %b\n", highlighted);
 		System.out.printf("Is this card enabled? %b\n", enabled);
+	}
+	
+	public void highlight(){
+		
+		highlighted = true;
+		setEnabled(true);
+		setBackground(Color.BLUE);
+		
+		
 	}
 }

@@ -172,6 +172,8 @@ public class Card extends JButton {
 	
 	public void selectCard()
 	{
+		
+		BoardCard bc = new BoardCard(name, suit, true, true);
 		if (selected)
         {
         	selected = false;
@@ -181,6 +183,11 @@ public class Card extends JButton {
         {
         	selected = true;
         	setBackground(Color.YELLOW);
+        	int[][] cardLocations = Board.indexOf(new Card(name,suit));
+        	int x = cardLocations[0][0];
+        	int y = cardLocations[0][1];
+        	System.out.println(x);
+        	Board.board[5][5].highlight(); // Random for now
         }
 	}
 	

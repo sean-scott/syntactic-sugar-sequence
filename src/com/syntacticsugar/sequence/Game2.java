@@ -9,7 +9,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Game2 extends JButton {
+public class Game2 {
 	
 	public Game2(){
 		
@@ -47,19 +47,7 @@ public class Game2 extends JButton {
 		f.add(p, BorderLayout.PAGE_END);		
 		f.setVisible(true);
 		
-		
-		addActionListener(new ActionListener() 
-		{
-	        public void actionPerformed(ActionEvent e)
-	        {
-	        
-	            // When clicked how name and suit
-	        	System.out.println("Hellow");
-	            System.out.println("You selected the " + d.getName() + " of " + d.getSuit());
-	            d.selectCard();
-	        }
-	    });
-	
+		d.selectCard();
 		
 		
 		
