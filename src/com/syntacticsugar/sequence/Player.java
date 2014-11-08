@@ -43,6 +43,21 @@ public class Player extends JPanel
 		hand[index] = null; //Follows same principal as deck's remove method
 	}
 	
+	public int indexOf(BoardCard bc){
+		
+		for (int i=0; i < hand.length; i++){
+			
+			if (hand[i].equals(bc)){
+				
+				return i;
+		
+			}
+		}
+		
+		
+		return 0;
+		
+	}
 
 	public void drawCard(){ 
 		
@@ -52,16 +67,14 @@ public class Player extends JPanel
  		
  		//Will find the removed card and replace it with a random card from the deck
 		for(int j = 0; j < 6; j++){ 
-			if(hand[j].getName() == "null"){ 
+
 				
 				int randomCard = rand.nextInt(max + 1) + min;
 				
-				//Copied from the generate hand method to pull from the deck
-	 			if (!Deck.deck[randomCard].getName().equals("null")){
+
 	 				hand[j] = Deck.deck[randomCard];
-	 				this.removeCard(randomCard);
-	 			}
-			}
+
+	 	
 		}
 	}
 	
