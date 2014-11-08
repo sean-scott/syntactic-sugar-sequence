@@ -2,8 +2,13 @@ package com.syntacticsugar.sequence;
 import java.awt.GridLayout;
 
 
+
+
 import javax.swing.*;
+
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Game {
 	
@@ -52,6 +57,19 @@ public class Game {
 		f.add(b);
 		f.add(p, BorderLayout.PAGE_END);		
 		f.setVisible(true);
+		
+		for (int i = 0; i < 6; i++)
+		{
+			p.hand[i].addActionListener(new ActionListener()
+			{
+				@Override
+				public void actionPerformed(ActionEvent e) 
+				{
+					System.out.println("WOW");
+					
+				}
+				});
+		}
 		
 		/***** LOGIC *****/
 		
