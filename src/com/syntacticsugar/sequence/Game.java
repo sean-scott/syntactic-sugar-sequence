@@ -100,6 +100,21 @@ public class Game {
 			 		{
 				 		b.board[second[0]][second[1]].mark();
 			 		}
+			 		
+			 		for (int i = 0; i < 10; i++)
+			 		{
+			 			for (int j = 0; j < 10; j++)
+			 			{
+			 				if (!b.board[i][j].equals(b.board[first[0]][first[1]]) || !b.board[i][j].equals(b.board[second[0]][second[1]]))
+			 				{
+			 					if (b.board[i][j].getName() != "")
+			 					{
+				 					b.board[i][j].unmark();
+			 					}
+			 				}
+			 			}
+			 		}
+			 		
 				}
 				});
 		}
