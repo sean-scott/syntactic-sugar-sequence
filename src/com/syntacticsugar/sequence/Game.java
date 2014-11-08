@@ -81,12 +81,15 @@ public class Game {
 				gameOver = true;
 			}
 			
+			else if (computerWon)
+			{	
+				System.out.println("Computer wins");
+				gameOver = true;
+			}
+			
 			else
 			{
 				computerWon = computerTurn();
-				
-				System.out.println("Computer wins");
-				gameOver = true;
 			}
 		}
 		
