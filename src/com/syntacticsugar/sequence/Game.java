@@ -18,8 +18,8 @@ public class Game
 	public static Board b = new Board();
 	public static Deck d = new Deck();
 	public static Player p = new Player(d.generateHand());
-	
-	public static boolean humanTurn = true;
+
+	public static boolean turnOver = false;
 	
 	// Pick card from Hand
 	
@@ -147,7 +147,7 @@ public class Game
 						// Should update GUI from within function
 						p.drawCard(index);
 						
-						humanTurn = false;
+						turnOver = true;
 					}
 				});
 			}
@@ -156,16 +156,23 @@ public class Game
 	
 	
 	
-	public static void humanTurn()
-	{
+	public static boolean humanTurn()
+	{	
 		System.out.println("Human turn");
+		
+		turnOver = false;
+		
+		updateHand();
+		updateBoard();
+		
+		return turnOver;
 	}
 	
-	public static void computerTurn()
+	public static boolean computerTurn()
 	{	
 		System.out.println("CPU turn");
 		
-		humanTurn = true;
+		return true;
 	}
 
 	public static void main(String[] args) 
@@ -205,11 +212,11 @@ public class Game
 
 		// Add action listener for every button in Hand
 		
-		updateHand();
+		//updateHand();
 		
 		// Add ActionListener for every BoardCard
 		
-		updateBoard();
+		//updateBoard();
 		
 		/***** LOGIC *****/
 		
@@ -225,21 +232,9 @@ public class Game
 		// TURN LOGIC
 		
 		boolean gameOver = false;
-		
-		//boolean humanWon = false;
-		//boolean computerWon = false;
 		/*
 		while (!gameOver)
 		{
-			if (humanTurn)
-			{
-				humanTurn();
-			}
-			
-			else
-			{
-				computerTurn();
-			}
 		}
 		*/
 	}
