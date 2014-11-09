@@ -26,19 +26,18 @@ public class Menu extends JFrame{
         panel.setLayout(new GridLayout(1, 4, 100, 100));
         
         //button 1 is for 1 player
-        button1 = new JButton("1Player vs CPU");
+        button1 = new JButton("Start");
         button1.addActionListener((new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {
             	
             	//Put "go to game here"
-                System.exit(0);
-                
+            	Game.main(new String[0]);
             }
         }));
         
         //button 2 is for 2
-        button2 = new JButton("2Player vs CPU");
+        button2 = new JButton("Exit");
         button2.addActionListener((new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {
