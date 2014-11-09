@@ -23,6 +23,53 @@ public class Game
 	
 	// Pick card from Hand
 	
+	public static void foo(int index)
+	{
+		Deck myD = new Deck();
+		myD.deck[index].printCard();
+		
+		int spots[][] = Board.indexOf(myD.deck[index]);
+ 		
+ 		// Simplifying (or not?)
+ 		
+ 		int first[] = new int[2]; // location of first card
+ 		int second[] = new int[2]; // location of second card
+ 		
+ 		first[0] = spots[0][0];
+ 		first[1] = spots[0][1];
+ 		
+ 		second[0] = spots[1][0];
+ 		second[1] = spots[1][1];
+ 		
+ 		//Card c = p.hand[x];
+ 		Card c = myD.deck[index];
+ 		markCard(c, first, second);
+		
+		
+	}
+	
+	public static void enableDeck()
+	{
+		for (int i = 0; i < d.deck.length; i++)
+		{
+			int x = i;
+			
+			d.deck[i].addActionListener(new ActionListener()
+			{
+				@Override
+				public void actionPerformed(ActionEvent arg0) 
+				{
+					System.out.println("You clicked index: " + x);
+					
+					int index = x;
+
+					foo(index);
+				}
+			});
+		}
+	}
+	
+	/*
 	public static void updateHand()
 	{
 		for (int i = 0; i < 6; i++)
@@ -65,7 +112,7 @@ public class Game
 				});
 		}
 	}
-	
+	*/
 	public static void updateBoard()
 	{
 		for (int i = 0; i < 10; i++)
@@ -202,7 +249,8 @@ public class Game
 	// Update GUI
 	public static void humanTurn()
 	{
-		updateHand();
+		enableDeck();
+		//updateHand();
 		//updateBoard();
 	}
 	
@@ -237,7 +285,7 @@ public class Game
 		
 		
 		// Generate Deck (non-GUI)
-		//enableDeck();
+		enableDeck();
 		//Deck d = new Deck();
 		
 		// Player - the 1x6 grid of cards that show player's current hand
@@ -255,7 +303,7 @@ public class Game
 		
 
 		// Add action listener for every button in Hand
-		updateHand();
+		//updateHand();
 		
 		// Add ActionListener for every BoardCard - only needs to be called once
 		updateBoard();
