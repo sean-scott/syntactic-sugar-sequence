@@ -44,7 +44,7 @@ public class CPU extends Player {
 		}
 	}
 	
-	public boolean checkFTW (Card c, BoardCard[][] b, String direction){
+	public boolean checkWin (Card c, BoardCard[][] b, String direction){
 		int row = 1, block = 0, i = 0 , j = 0;
 		//Row will count the sequence
 		//block will count the number of invalid spaces
@@ -106,6 +106,9 @@ public class CPU extends Player {
 	public void turn()
 	{
 		//Win
+		for(int i = 0; i < numCards_C; i++){
+			
+		}
 		
 		//Block
 		
