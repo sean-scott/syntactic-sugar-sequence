@@ -19,7 +19,9 @@ public class Game
 	public static Deck d = new Deck();
 	public static Player p = new Player(d.generateHand());
 
-	public static boolean turnOver = false;
+	public static boolean humanTurn = false;
+	
+	public static int turnIndex = 0;
 	
 	// Pick card from Hand
 	
@@ -147,33 +149,55 @@ public class Game
 						// Should update GUI from within function
 						p.drawCard(index);
 						
-						turnOver = true;
+						System.out.println("Something has happened!");
+			            turnBtnAction(e);
 					}
 				});
 			}
 		}
 	}
-	
-	
-	
-	public static boolean humanTurn()
-	{	
-		System.out.println("Human turn");
+
+	public static void turnBtnAction(ActionEvent evt) {
+	      turnIndex++; // next player
+	      turnIndex %= 2;
+
+	      doSomething(turnIndex);
+	   }
+
+	public static void doSomething(int index) 
+	{
+		String msg = new String();
 		
-		turnOver = false;
+		if (index == 0)
+		{
+			msg = "Human turn";
+			humanTurn();
+		}
 		
+		else
+		{
+			msg = "Computer turn";
+			computerTurn();
+		}
+		
+	     System.out.println(msg);
+	}
+	
+	public static void humanTurn()
+	{
 		updateHand();
 		updateBoard();
-		
-		return turnOver;
 	}
 	
-	public static boolean computerTurn()
-	{	
-		System.out.println("CPU turn");
+	public static void computerTurn()
+	{
+		System.out.println("CPU is done");
+		turnIndex++;
+		turnIndex %= 2;
 		
-		return true;
+		doSomething(turnIndex);
 	}
+	
 
 	public static void main(String[] args) 
 	{
@@ -228,14 +252,5 @@ public class Game
 		// 4) Highlight matching BoardCard
 		// 5) Allow user to choose the BoardCard, or select another card from hand
 		// 6) Repeat...
-		
-		// TURN LOGIC
-		
-		boolean gameOver = false;
-		/*
-		while (!gameOver)
-		{
-		}
-		*/
 	}
 }
