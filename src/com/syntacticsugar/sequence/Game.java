@@ -19,8 +19,6 @@ public class Game
 	public static Deck d = new Deck();
 	public static Player p = new Player(d.generateHand());
 
-	public static boolean humanTurn = false;
-	
 	public static int turnIndex = 0;
 	
 	// Pick card from Hand
@@ -149,6 +147,8 @@ public class Game
 						// Should update GUI from within function
 						p.drawCard(index);
 						
+						unmarkAll();
+						
 						System.out.println("Something has happened!");
 			            turnBtnAction(e);
 					}
@@ -156,7 +156,19 @@ public class Game
 			}
 		}
 	}
-
+	
+	public static void unmarkAll()
+	{
+		for (int i = 0; i < 10; i++)
+		{
+			for (int j = 0; j < 10; j++)
+			{
+				b.board[i][j].unmark();
+				b.board[i][j].setEnabled(false);
+			}
+		}
+	}
+	
 	public static void turnBtnAction(ActionEvent evt) {
 	      turnIndex++; // next player
 	      turnIndex %= 2;
