@@ -10,64 +10,27 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Game {
+public class Game 
+{
+	// GUI Elements
 	
-	public static boolean humanTurn()
-	{
-		return false;
-	}
+	public static JFrame f = new JFrame("Sequence!");
+	public static Board b = new Board();
+	public static Deck d = new Deck();
+	public static Player p = new Player(d.generateHand());
 	
-	public static boolean computerTurn()
+	public static boolean humanTurn = true;
+	
+	// Pick card from Hand
+	
+	public static void updateHand()
 	{
-		
-		
-		return false;
-	}
-
-	public static void main(String[] args) 
-	{
-		/***** GUI *****/
-		
-		// Frame - the main window that holds everything.
-		
-		JFrame f = new JFrame("Sequence!");
-		f.setLayout(new FlowLayout());
-		f.setSize(1000,1000);
-		f.setResizable(false);
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		// Board - the 10x10 grid of cards to make a sequence
-		
-		Board b = new Board();
-		b.setLayout(new GridLayout(10,10));
-		b.setBorder(BorderFactory.createMatteBorder(8, 8, 8, 8, Color.GRAY));
-		
-		
-		// Generate Deck (non-GUI)
-		Deck d = new Deck();
-		
-		// Player - the 1x6 grid of cards that show player's current hand
-		
-		Player p = new Player(d.generateHand());
-		p.setLayout(new GridLayout(1,6));
-		p.setBorder(BorderFactory.createMatteBorder(8, 8, 8, 8, Color.BLACK));
-		
-		// Adding everything to Frame
-		
-		f.add(b);
-		f.add(p, BorderLayout.PAGE_END);		
-		f.setVisible(true);
-		
-
-		// Add action listener for every button in Hand
-		
 		for (int i = 0; i < 6; i++)
 		{
 			int x = i; // Java doesn't like accessing 'i' from inside ActionListener
 			
 			p.hand[i].addActionListener(new ActionListener()
 			{
-
 				// A card was selected from the hand
 				
 				@Override
@@ -154,9 +117,10 @@ public class Game {
 				}
 				});
 		}
-		
-		// Add ActionListener for every BoardCard
-		
+	}
+	
+	public static void updateBoard()
+	{
 		for (int i = 0; i < 10; i++)
 		{
 			for (int j = 0; j < 10; j++)
@@ -182,10 +146,70 @@ public class Game {
 						// Draw new card from deck, replaces selected card from hand
 						// Should update GUI from within function
 						p.drawCard(index);
+						
+						humanTurn = false;
 					}
 				});
 			}
 		}
+	}
+	
+	
+	
+	public static void humanTurn()
+	{
+		System.out.println("Human turn");
+	}
+	
+	public static void computerTurn()
+	{	
+		System.out.println("CPU turn");
+		
+		humanTurn = true;
+	}
+
+	public static void main(String[] args) 
+	{
+		/***** GUI *****/
+		
+		// Frame - the main window that holds everything.
+		
+		//JFrame f = new JFrame("Sequence!");
+		f.setLayout(new FlowLayout());
+		f.setSize(1000,1000);
+		f.setResizable(false);
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		// Board - the 10x10 grid of cards to make a sequence
+		
+		//Board b = new Board();
+		b.setLayout(new GridLayout(10,10));
+		b.setBorder(BorderFactory.createMatteBorder(8, 8, 8, 8, Color.GRAY));
+		
+		
+		// Generate Deck (non-GUI)
+		//Deck d = new Deck();
+		
+		// Player - the 1x6 grid of cards that show player's current hand
+		
+		//Player p = new Player(d.generateHand());
+		p.setLayout(new GridLayout(1,6));
+		p.setBorder(BorderFactory.createMatteBorder(8, 8, 8, 8, Color.BLACK));
+		
+		// Adding everything to Frame
+		
+		f.add(b);
+		f.add(p, BorderLayout.PAGE_END);		
+		f.setVisible(true);
+		
+
+		// Add action listener for every button in Hand
+		
+		updateHand();
+		
+		// Add ActionListener for every BoardCard
+		
+		updateBoard();
 		
 		/***** LOGIC *****/
 		
@@ -202,29 +226,21 @@ public class Game {
 		
 		boolean gameOver = false;
 		
-		boolean humanWon = false;
-		boolean computerWon = false;
-		
+		//boolean humanWon = false;
+		//boolean computerWon = false;
+		/*
 		while (!gameOver)
 		{
-			humanWon = humanTurn();
-			
-			if (humanWon)
+			if (humanTurn)
 			{
-				System.out.println("Human wins!");
-				gameOver = true;
-			}
-			
-			else if (computerWon)
-			{	
-				System.out.println("Computer wins");
-				gameOver = true;
+				humanTurn();
 			}
 			
 			else
 			{
-				computerWon = computerTurn();
+				computerTurn();
 			}
 		}
+		*/
 	}
 }
