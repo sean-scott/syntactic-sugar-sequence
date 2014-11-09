@@ -212,11 +212,11 @@ public class Game
 
 		// Add action listener for every button in Hand
 		
-		//updateHand();
+		updateHand();
 		
 		// Add ActionListener for every BoardCard
 		
-		//updateBoard();
+		updateBoard();
 		
 		/***** LOGIC *****/
 		
