@@ -20,18 +20,19 @@ public class Game
 	public static Player p = new Player();
 
 	public static int turnIndex = 0;
+	public static boolean isWild = false;
 	
 	// Pick card from Hand
 	
-	public static void foo(int index)
+	public static void findCard(int index)
 	{
+		// Initialize new Deck to make compiler happy
 		Deck myD = new Deck();
-		myD.deck[index].printCard();
 		
+		// Find the two spots on the Board where the chosen card is
 		int spots[][] = Board.indexOf(myD.deck[index]);
  		
- 		// Simplifying (or not?)
- 		
+ 		// Simplifying spots[][]
  		int first[] = new int[2]; // location of first card
  		int second[] = new int[2]; // location of second card
  		
@@ -40,12 +41,10 @@ public class Game
  		
  		second[0] = spots[1][0];
  		second[1] = spots[1][1];
- 		
- 		//Card c = p.hand[x];
+
+ 		// Function to mark the cards on the Board
  		Card c = myD.deck[index];
  		markCard(c, first, second);
-		
-		
 	}
 	
 	public static void enableDeck()
@@ -59,60 +58,14 @@ public class Game
 				@Override
 				public void actionPerformed(ActionEvent arg0) 
 				{
-					System.out.println("You clicked index: " + x);
-					
 					int index = x;
 
-					foo(index);
+					findCard(index);
 				}
 			});
 		}
 	}
 	
-	/*
-	public static void updateHand()
-	{
-		for (int i = 0; i < 6; i++)
-		{
-			int x = i; // Java doesn't like accessing 'i' from inside ActionListener
-			
-			p.handList.get(i).addActionListener(new ActionListener()
-			{
-				// A card was selected from the hand
-				
-				@Override
-				public void actionPerformed(ActionEvent e) 
-				{	
-					// What index is it?
-					
-					System.out.println("Index of card in hand: " + x);
-					
-					// Enable the current cards on the board (if not already highlighted)
-					
-					// Find the two locations of the BoardCard
-					// BoardCard matches the card you clicked from hand
-					
-					int spots[][] = Board.indexOf(p.handList.get(x));
-			 		
-			 		// Simplifying (or not?)
-			 		
-			 		int first[] = new int[2]; // location of first card
-			 		int second[] = new int[2]; // location of second card
-			 		
-			 		first[0] = spots[0][0];
-			 		first[1] = spots[0][1];
-			 		
-			 		second[0] = spots[1][0];
-			 		second[1] = spots[1][1];
-			 		
-			 		//Card c = p.hand[x];
-			 		Card c = p.handList.get(x);
-			 		markCard(c, first, second);
-				}
-				});
-		}
-	}
-	*/
 	public static void updateBoard()
 	{
 		for (int i = 0; i < 10; i++)
@@ -137,7 +90,25 @@ public class Game
 						
 						// Get index of selected BoardCard to replace card from hand
 						
-						int index = p.indexOf(b.board[x][y]);
+						int index = 0;
+						
+						if (isWild)
+						{
+							// Find Jack
+							
+							for (int i = 0; i < 6; i++)
+							{
+								if (p.handList.get(i).getName().equals("J"))
+								{
+									index = i;
+								}
+							}
+						}
+						
+						else
+						{
+							index = p.indexOf(b.board[x][y]);
+						}
 						
 						System.out.println("Index returned: " + index);
 						
@@ -161,6 +132,8 @@ public class Game
  		// Select any card with Jack
  		if (c.getName().equals("J"))
  		{
+ 			isWild = true;
+ 			
  			for (int i = 0; i < 10; i++)
  			{
  				for (int j = 0; j < 10; j++)
@@ -176,6 +149,8 @@ public class Game
  		// Any card that isn't a Jack (just show that specific card)
  		else
  		{
+ 			isWild = false;
+ 			
  			// Mark the card to make it visually stand out
  			// If already highlighted, don't mark it
  			
@@ -250,8 +225,6 @@ public class Game
 	public static void humanTurn()
 	{
 		enableDeck();
-		//updateHand();
-		//updateBoard();
 	}
 	
 	// CPU stuff
@@ -270,27 +243,23 @@ public class Game
 		/***** GUI *****/
 		
 		// Frame - the main window that holds everything.
-		
-		//JFrame f = new JFrame("Sequence!");
+
 		f.setLayout(new FlowLayout());
 		f.setSize(1000,1000);
 		f.setResizable(false);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		// Board - the 10x10 grid of cards to make a sequence
-		
-		//Board b = new Board();
+
 		b.setLayout(new GridLayout(10,10));
 		b.setBorder(BorderFactory.createMatteBorder(8, 8, 8, 8, Color.GRAY));
 		
 		
-		// Generate Deck (non-GUI)
+		// Enable ActionListener for Deck (will be called with every Human Turn
 		enableDeck();
-		//Deck d = new Deck();
 		
 		// Player - the 1x6 grid of cards that show player's current hand
 		
-		//Player p = new Player(d.generateHand());
 		p.makeHand(d.generateHand());
 		p.setLayout(new GridLayout(1,6));
 		p.setBorder(BorderFactory.createMatteBorder(8, 8, 8, 8, Color.BLACK));
@@ -301,22 +270,7 @@ public class Game
 		f.add(p, BorderLayout.PAGE_END);		
 		f.setVisible(true);
 		
-
-		// Add action listener for every button in Hand
-		//updateHand();
-		
 		// Add ActionListener for every BoardCard - only needs to be called once
 		updateBoard();
-		
-		/***** LOGIC *****/
-		
-		// Human's turn
-		
-		// 1) Select card from hand (only one card should be selected at a time)
-		// 2) Get index of selected card -- might not be needed
-		// 3) Find where the card is on the board
-		// 4) Highlight matching BoardCard
-		// 5) Allow user to choose the BoardCard, or select another card from hand
-		// 6) Repeat...
 	}
 }
