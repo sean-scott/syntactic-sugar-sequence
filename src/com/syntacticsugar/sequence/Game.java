@@ -147,16 +147,18 @@ public class Game
 						// Should update GUI from within function
 						p.drawCard(index);
 						
+						// Prevent user from selecting another card
 						unmarkAll();
 						
-						System.out.println("Something has happened!");
-			            turnBtnAction(e);
+						// Setup the computer's turn
+			            getTurn(e);
 					}
 				});
 			}
 		}
 	}
 	
+	// Set Board to fully disabled and unmark every card to prevent user selection
 	public static void unmarkAll()
 	{
 		for (int i = 0; i < 10; i++)
@@ -169,45 +171,46 @@ public class Game
 		}
 	}
 	
-	public static void turnBtnAction(ActionEvent evt) {
-	      turnIndex++; // next player
-	      turnIndex %= 2;
-
-	      doSomething(turnIndex);
-	   }
-
-	public static void doSomething(int index) 
+	// Increment turn index (taken from Board actionListener)
+	public static void getTurn(ActionEvent e)
 	{
-		String msg = new String();
+		turnIndex++;
+		turnIndex %= 2;
 		
+		changeTurn(turnIndex);
+	}
+	
+	// Change turn from Human to CPU, vice-versa
+	public static void changeTurn(int index)
+	{
 		if (index == 0)
 		{
-			msg = "Human turn";
+			System.out.println("Human's turn");
 			humanTurn();
 		}
 		
 		else
 		{
-			msg = "Computer turn";
+			System.out.println("Computer's turn");
 			computerTurn();
 		}
-		
-	     System.out.println(msg);
 	}
 	
+	// Update GUI
 	public static void humanTurn()
 	{
 		updateHand();
 		updateBoard();
 	}
 	
+	// CPU stuff
 	public static void computerTurn()
 	{
 		System.out.println("CPU is done");
 		turnIndex++;
 		turnIndex %= 2;
 		
-		doSomething(turnIndex);
+		changeTurn(turnIndex);
 	}
 	
 
