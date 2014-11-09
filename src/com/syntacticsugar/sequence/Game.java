@@ -35,7 +35,7 @@ public class Game
 				
 				@Override
 				public void actionPerformed(ActionEvent e) 
-				{
+				{	
 					// What index is it?
 					
 					System.out.println("Index of card in hand: " + x);
@@ -58,56 +58,9 @@ public class Game
 			 		second[0] = spots[1][0];
 			 		second[1] = spots[1][1];
 			 		
+			 		Card c = p.hand[x];
 			 		
-			 		// Select any card with Jack
-			 		
-			 		if (p.hand[x].getName().equals("J"))
-			 		{
-			 			for (int i = 0; i < 10; i++)
-			 			{
-			 				for (int j = 0; j < 10; j++)
-			 				{
-			 					if (!b.board[i][j].highlighted)
-			 					{
-			 						b.board[i][j].mark();
-			 					}
-			 				}
-			 			}
-			 		}
-			 		
-			 		// Any card that isn't a Jack (just show that specific card)
-			 		
-			 		else
-			 		{
-			 			// Mark the card to make it visually stand out
-			 			// If already highlighted, don't mark it
-			 			
-			 			if (!b.board[first[0]][first[1]].highlighted)
-			 			{	
-			 				b.board[first[0]][first[1]].mark();
-			 			}
-			 		
-			 			if (!b.board[second[0]][second[1]].highlighted)
-			 			{
-			 				b.board[second[0]][second[1]].mark();
-			 			}
-			 			
-			 			// Unmark anything that is not the 2 BoardCards that match what the card you selected in your hand
-			 			
-			 			for (int i = 0; i < 10; i++)
-				 		{
-				 			for (int j = 0; j < 10; j++)
-				 			{
-				 				if (!b.board[i][j].equals(b.board[first[0]][first[1]]) || !b.board[i][j].equals(b.board[second[0]][second[1]]))
-				 				{
-				 					if (b.board[i][j].getName() != "")
-				 					{
-					 					b.board[i][j].unmark();
-				 					}
-				 				}
-				 			}
-				 		}
-			 		}
+			 		markCard(c, first, second);
 				}
 				});
 		}
@@ -154,6 +107,58 @@ public class Game
 				});
 			}
 		}
+	}
+	
+	public static void markCard(Card c, int[] first, int [] second)
+	{
+ 		// Select any card with Jack
+ 		if (c.getName().equals("J"))
+ 		{
+ 			for (int i = 0; i < 10; i++)
+ 			{
+ 				for (int j = 0; j < 10; j++)
+ 				{
+ 					if (!b.board[i][j].highlighted)
+ 					{
+ 						b.board[i][j].mark();
+ 					}
+ 				}
+ 			}
+ 		}
+ 		
+ 		// Any card that isn't a Jack (just show that specific card)
+ 		else
+ 		{
+ 			// Mark the card to make it visually stand out
+ 			// If already highlighted, don't mark it
+ 			
+ 			if (!b.board[first[0]][first[1]].highlighted)
+ 			{	
+ 				b.board[first[0]][first[1]].mark();
+ 			}
+ 		
+ 			if (!b.board[second[0]][second[1]].highlighted)
+ 			{
+ 				b.board[second[0]][second[1]].mark();
+ 			}
+ 			
+ 			// Unmark anything that is not the 2 BoardCards that match what the card you selected in your hand
+ 			
+ 			for (int i = 0; i < 10; i++)
+	 		{
+	 			for (int j = 0; j < 10; j++)
+	 			{
+	 				if (!b.board[i][j].equals(b.board[first[0]][first[1]]) || !b.board[i][j].equals(b.board[second[0]][second[1]]))
+	 				{
+	 					if (b.board[i][j].getName() != "")
+	 					{
+		 					b.board[i][j].unmark();
+	 					}
+	 				}
+	 			}
+	 		}
+ 		}
+		
 	}
 	
 	// Set Board to fully disabled and unmark every card to prevent user selection
