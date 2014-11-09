@@ -60,7 +60,7 @@ public class Player extends JPanel
 		
 	}
 
-	public void drawCard(int index)
+	public Card[] drawCard(int index)
 	{ 
 		Random rand = new Random(System.currentTimeMillis());
  		
@@ -83,5 +83,7 @@ public class Player extends JPanel
 	 	
 	 	revalidate();
 	 	repaint();	
+	 	
+	 	return hand;
 	}
 }

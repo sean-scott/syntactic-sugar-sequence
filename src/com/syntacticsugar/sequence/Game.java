@@ -145,7 +145,7 @@ public class Game
 						
 						// Draw new card from deck, replaces selected card from hand
 						// Should update GUI from within function
-						p.drawCard(index);
+						p.hand = p.drawCard(index);
 						
 						// Prevent user from selecting another card
 						unmarkAll();
