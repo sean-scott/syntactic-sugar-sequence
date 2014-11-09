@@ -59,9 +59,11 @@ public class Game {
 		f.setVisible(true);
 		
 
+		// Add action listener for every button in Hand
+		
 		for (int i = 0; i < 6; i++)
 		{
-			int x = i;
+			int x = i; // Java doesn't like accessing 'i' from inside ActionListener
 			
 			p.hand[i].addActionListener(new ActionListener()
 			{
@@ -77,6 +79,9 @@ public class Game {
 					
 					// Enable the current cards on the board (if not already highlighted)
 					
+					// Find the two locations of the BoardCard
+					// BoardCard matches the card you clicked from hand
+					
 					int spots[][] = Board.indexOf(p.hand[x]);
 					
 			 		System.out.println("Find where the card is equal to the cards on the Board");
@@ -84,6 +89,8 @@ public class Game {
 			 			" is located at (" + spots[0][0] + ", " + spots[0][1] + 
 			 			") and (" + spots[1][0] + ", " + spots[1][1] + ")");
 			 		System.out.println();
+			 		
+			 		// Simplifying (or not?)
 			 		
 			 		int first[] = new int[2]; // location of first card
 			 		int second[] = new int[2]; // location of second card
@@ -115,6 +122,9 @@ public class Game {
 			 		
 			 		else
 			 		{
+			 			// Mark the card to make it visually stand out
+			 			// If already highlighted, don't mark it
+			 			
 			 			if (!b.board[first[0]][first[1]].highlighted)
 			 			{	
 			 				b.board[first[0]][first[1]].mark();
@@ -124,6 +134,8 @@ public class Game {
 			 			{
 			 				b.board[second[0]][second[1]].mark();
 			 			}
+			 			
+			 			// Unmark anything that is not the 2 BoardCards that match what the card you selected in your hand
 			 			
 			 			for (int i = 0; i < 10; i++)
 				 		{
@@ -142,6 +154,8 @@ public class Game {
 				}
 				});
 		}
+		
+		// Add ActionListener for every BoardCard
 		
 		for (int i = 0; i < 10; i++)
 		{
@@ -212,48 +226,5 @@ public class Game {
 				computerWon = computerTurn();
 			}
 		}
-		
-		
-		
-		
-		
-		
-		
-		
-		/*
-		
-		int[][] spots = Board.indexOf(d.selectCard());
- 		System.out.println("Find where the card is equal to the cards on the Board");
- 		System.out.println(Deck.deck[12].getName() + "-" + Deck.deck[12].getSuit() + 
- 			" is located at (" + spots[0][0] + ", " + spots[0][1] + 
- 			") and (" + spots[1][0] + ", " + spots[1][1] + ")");
- 		System.out.println();
-		*/
-		//?
-		/*
-		int[][] spots = Board.indexOf(Deck.deck[12]);
-			
- 		// Testing where the card is. Check the Board class to confirm location
- 		System.out.println("Find where the card is equal to the cards on the Board");
- 		System.out.println(Deck.deck[12].getName() + "-" + Deck.deck[12].getSuit() + 
- 			" is located at (" + spots[0][0] + ", " + spots[0][1] + 
- 			") and (" + spots[1][0] + ", " + spots[1][1] + ")");
- 		System.out.println();
- 		
- 		
- 		
- 		int first[] = new int[2];
- 		first[0] = spots[0][0];
- 		first[1] = spots[0][1];
- 		
- 
- 		System.out.println("Selecting this card. Highlight state will change");
- 		System.out.println();
- 		
- 		Board.selectCard(first);
- 		System.out.println("Testing BoardCard print. Name/Suit and highlight state");
- 		Board.board[2][5].printCard();
- 		System.out.println();
- 		*/
 	}
 }
