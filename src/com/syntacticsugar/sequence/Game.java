@@ -46,12 +46,6 @@ public class Game
 					// BoardCard matches the card you clicked from hand
 					
 					int spots[][] = Board.indexOf(p.hand[x]);
-					
-			 		System.out.println("Find where the card is equal to the cards on the Board");
-			 		System.out.println(p.hand[x].getName() + "-" + p.hand[x].getSuit() + 
-			 			" is located at (" + spots[0][0] + ", " + spots[0][1] + 
-			 			") and (" + spots[1][0] + ", " + spots[1][1] + ")");
-			 		System.out.println();
 			 		
 			 		// Simplifying (or not?)
 			 		
@@ -135,6 +129,8 @@ public class Game
 					@Override
 					public void actionPerformed(ActionEvent e) 
 					{	
+						System.out.println("Action performed");
+						
 						// Highlight selected BoardCard
 						
 						b.board[x][y].highlight();
@@ -142,6 +138,8 @@ public class Game
 						// Get index of selected BoardCard to replace card from hand
 						
 						int index = p.indexOf(b.board[x][y]);
+						
+						System.out.println("Index returned: " + index);
 						
 						// Draw new card from deck, replaces selected card from hand
 						// Should update GUI from within function
