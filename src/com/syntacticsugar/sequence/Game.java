@@ -35,7 +35,7 @@ public class Game
 				
 				@Override
 				public void actionPerformed(ActionEvent e) 
-				{
+				{	
 					// What index is it?
 					
 					System.out.println("Index of card in hand: " + x);
@@ -46,12 +46,6 @@ public class Game
 					// BoardCard matches the card you clicked from hand
 					
 					int spots[][] = Board.indexOf(p.hand[x]);
-					
-			 		System.out.println("Find where the card is equal to the cards on the Board");
-			 		System.out.println(p.hand[x].getName() + "-" + p.hand[x].getSuit() + 
-			 			" is located at (" + spots[0][0] + ", " + spots[0][1] + 
-			 			") and (" + spots[1][0] + ", " + spots[1][1] + ")");
-			 		System.out.println();
 			 		
 			 		// Simplifying (or not?)
 			 		
@@ -64,56 +58,9 @@ public class Game
 			 		second[0] = spots[1][0];
 			 		second[1] = spots[1][1];
 			 		
+			 		Card c = p.hand[x];
 			 		
-			 		// Select any card with Jack
-			 		
-			 		if (p.hand[x].getName().equals("J"))
-			 		{
-			 			for (int i = 0; i < 10; i++)
-			 			{
-			 				for (int j = 0; j < 10; j++)
-			 				{
-			 					if (!b.board[i][j].highlighted)
-			 					{
-			 						b.board[i][j].mark();
-			 					}
-			 				}
-			 			}
-			 		}
-			 		
-			 		// Any card that isn't a Jack (just show that specific card)
-			 		
-			 		else
-			 		{
-			 			// Mark the card to make it visually stand out
-			 			// If already highlighted, don't mark it
-			 			
-			 			if (!b.board[first[0]][first[1]].highlighted)
-			 			{	
-			 				b.board[first[0]][first[1]].mark();
-			 			}
-			 		
-			 			if (!b.board[second[0]][second[1]].highlighted)
-			 			{
-			 				b.board[second[0]][second[1]].mark();
-			 			}
-			 			
-			 			// Unmark anything that is not the 2 BoardCards that match what the card you selected in your hand
-			 			
-			 			for (int i = 0; i < 10; i++)
-				 		{
-				 			for (int j = 0; j < 10; j++)
-				 			{
-				 				if (!b.board[i][j].equals(b.board[first[0]][first[1]]) || !b.board[i][j].equals(b.board[second[0]][second[1]]))
-				 				{
-				 					if (b.board[i][j].getName() != "")
-				 					{
-					 					b.board[i][j].unmark();
-				 					}
-				 				}
-				 			}
-				 		}
-			 		}
+			 		markCard(c, first, second);
 				}
 				});
 		}
@@ -135,6 +82,8 @@ public class Game
 					@Override
 					public void actionPerformed(ActionEvent e) 
 					{	
+						System.out.println("Action performed");
+						
 						// Highlight selected BoardCard
 						
 						b.board[x][y].highlight();
@@ -142,6 +91,8 @@ public class Game
 						// Get index of selected BoardCard to replace card from hand
 						
 						int index = p.indexOf(b.board[x][y]);
+						
+						System.out.println("Index returned: " + index);
 						
 						// Draw new card from deck, replaces selected card from hand
 						// Should update GUI from within function
@@ -156,6 +107,58 @@ public class Game
 				});
 			}
 		}
+	}
+	
+	public static void markCard(Card c, int[] first, int [] second)
+	{
+ 		// Select any card with Jack
+ 		if (c.getName().equals("J"))
+ 		{
+ 			for (int i = 0; i < 10; i++)
+ 			{
+ 				for (int j = 0; j < 10; j++)
+ 				{
+ 					if (!b.board[i][j].highlighted)
+ 					{
+ 						b.board[i][j].mark();
+ 					}
+ 				}
+ 			}
+ 		}
+ 		
+ 		// Any card that isn't a Jack (just show that specific card)
+ 		else
+ 		{
+ 			// Mark the card to make it visually stand out
+ 			// If already highlighted, don't mark it
+ 			
+ 			if (!b.board[first[0]][first[1]].highlighted)
+ 			{	
+ 				b.board[first[0]][first[1]].mark();
+ 			}
+ 		
+ 			if (!b.board[second[0]][second[1]].highlighted)
+ 			{
+ 				b.board[second[0]][second[1]].mark();
+ 			}
+ 			
+ 			// Unmark anything that is not the 2 BoardCards that match what the card you selected in your hand
+ 			
+ 			for (int i = 0; i < 10; i++)
+	 		{
+	 			for (int j = 0; j < 10; j++)
+	 			{
+	 				if (!b.board[i][j].equals(b.board[first[0]][first[1]]) || !b.board[i][j].equals(b.board[second[0]][second[1]]))
+	 				{
+	 					if (b.board[i][j].getName() != "")
+	 					{
+		 					b.board[i][j].unmark();
+	 					}
+	 				}
+	 			}
+	 		}
+ 		}
+		
 	}
 	
 	// Set Board to fully disabled and unmark every card to prevent user selection

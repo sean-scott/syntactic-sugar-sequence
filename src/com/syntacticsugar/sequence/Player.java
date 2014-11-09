@@ -72,13 +72,9 @@ public class Player extends JPanel
 	 	removeAll();
 	 	//remove(hand[index]);
 	 	
-	 	System.out.println("Your hand is now: ");
-	 	
 	 	for (int i = 0; i < 6; i++)
 	 	{
 	 		add(hand[i]);
-	 		
-	 		hand[i].printCard();
 	 	}
 	 	
 	 	revalidate();

@@ -164,7 +164,6 @@ public class Deck extends Card
  			if (!(Deck.deck[randomCard] == null))
  			{
  				hand[i] = Deck.deck[randomCard];
- 				Deck.deck[randomCard].printCard(); // Test printCard statement
  				removeCard(randomCard); // This should be working to delete card
  				numCards++;
  				i++;
