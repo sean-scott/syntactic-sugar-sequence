@@ -6,7 +6,7 @@ public class Human extends Player {
 	
 	public Human(Card[] hand){
 
-		super(hand);
+		//super(hand);
 			
 	}
 	

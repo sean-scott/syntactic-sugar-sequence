@@ -11,7 +11,7 @@ public class CPU extends Player {
 	
 	public CPU(Card[] hand){
 		
-		super(hand);
+		//super(hand);
 		CPUhand = hand;
 		numCards_P = 0;
 		numCards_C = 0;
