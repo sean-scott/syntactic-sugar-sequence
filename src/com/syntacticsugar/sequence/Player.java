@@ -10,7 +10,7 @@ public class Player extends JPanel
 {
 	List<Card> handList = new ArrayList<Card>();
 	
-	public Player(Card[] hand)
+	public Player(List<Card> hand)
 	{
 		makeHand(hand);
 	}
@@ -19,18 +19,19 @@ public class Player extends JPanel
 	{	
 	}
 	
-	public void makeHand(Card[] hand)
+	public void makeHand(List<Card> hand)
 	{
+		
 		for (int i = 0; i < 6; i++)
 		{
-			handList.add(hand[i]); // Populate ArrayList
-			this.add(hand[i]); // GUI - Paint cards
+			handList.add(hand.get(i)); // Populate ArrayList
+			this.add(handList.get(i)); // GUI - Paint cards
 		}
 	}
 	
 	public void removeCard(int index)
 	{
-		//hand[index] = null; //Follows same principal as deck's remove method
+		Deck.deck.remove(index); //Removes the card from the Deck list
 	}
 	
 	public int indexOf(BoardCard bc)
@@ -52,10 +53,10 @@ public class Player extends JPanel
 		
 		Random rand = new Random(System.currentTimeMillis());
  		
- 		int min = 0; int max = 107;
- 		
+ 		int min = 0; int max = Deck.deck.size(); int randIndex;
+ 		randIndex = rand.nextInt(max + 1) + min;
  		// Switch used card out with a new random Card from Deck
- 		handList.set(index, Deck.deck[rand.nextInt(max + 1) + min]);
+ 		handList.set(index, Deck.deck.get(randIndex));
  		
  		/***** GUI *****/
  		
@@ -68,5 +69,8 @@ public class Player extends JPanel
 	 	
 	 	revalidate();
 	 	repaint();	
+	 	
+	 	// Deck.deck.remove(randIndex); Why doesn't this shit work
+	 	
 	}
 }

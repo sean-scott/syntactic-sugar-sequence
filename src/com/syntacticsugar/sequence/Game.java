@@ -30,7 +30,7 @@ public class Game
 		Deck myD = new Deck();
 		
 		// Find the two spots on the Board where the chosen card is
-		int spots[][] = Board.indexOf(myD.deck[index]);
+		int spots[][] = Board.indexOf(myD.deck.get(index));
  		
  		// Simplifying spots[][]
  		int first[] = new int[2]; // location of first card
@@ -43,17 +43,17 @@ public class Game
  		second[1] = spots[1][1];
 
  		// Function to mark the cards on the Board
- 		Card c = myD.deck[index];
+ 		Card c = myD.deck.get(index);
  		markCard(c, first, second);
 	}
 	
 	public static void enableDeck()
 	{
-		for (int i = 0; i < d.deck.length; i++)
+		for (int i = 0; i < 108; i++)
 		{
 			int x = i;
 			
-			d.deck[i].addActionListener(new ActionListener()
+			d.deck.get(i).addActionListener(new ActionListener()
 			{
 				@Override
 				public void actionPerformed(ActionEvent arg0) 
