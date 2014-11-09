@@ -17,19 +17,66 @@ public class Game
 	public static JFrame f = new JFrame("Sequence!");
 	public static Board b = new Board();
 	public static Deck d = new Deck();
-	public static Player p = new Player(d.generateHand());
+	public static Player p = new Player();
 
 	public static int turnIndex = 0;
 	
 	// Pick card from Hand
 	
+	public static void foo(int index)
+	{
+		Deck myD = new Deck();
+		myD.deck[index].printCard();
+		
+		int spots[][] = Board.indexOf(myD.deck[index]);
+ 		
+ 		// Simplifying (or not?)
+ 		
+ 		int first[] = new int[2]; // location of first card
+ 		int second[] = new int[2]; // location of second card
+ 		
+ 		first[0] = spots[0][0];
+ 		first[1] = spots[0][1];
+ 		
+ 		second[0] = spots[1][0];
+ 		second[1] = spots[1][1];
+ 		
+ 		//Card c = p.hand[x];
+ 		Card c = myD.deck[index];
+ 		markCard(c, first, second);
+		
+		
+	}
+	
+	public static void enableDeck()
+	{
+		for (int i = 0; i < d.deck.length; i++)
+		{
+			int x = i;
+			
+			d.deck[i].addActionListener(new ActionListener()
+			{
+				@Override
+				public void actionPerformed(ActionEvent arg0) 
+				{
+					System.out.println("You clicked index: " + x);
+					
+					int index = x;
+
+					foo(index);
+				}
+			});
+		}
+	}
+	
+	/*
 	public static void updateHand()
 	{
 		for (int i = 0; i < 6; i++)
 		{
 			int x = i; // Java doesn't like accessing 'i' from inside ActionListener
 			
-			p.hand[i].addActionListener(new ActionListener()
+			p.handList.get(i).addActionListener(new ActionListener()
 			{
 				// A card was selected from the hand
 				
@@ -45,7 +92,7 @@ public class Game
 					// Find the two locations of the BoardCard
 					// BoardCard matches the card you clicked from hand
 					
-					int spots[][] = Board.indexOf(p.hand[x]);
+					int spots[][] = Board.indexOf(p.handList.get(x));
 			 		
 			 		// Simplifying (or not?)
 			 		
@@ -58,14 +105,14 @@ public class Game
 			 		second[0] = spots[1][0];
 			 		second[1] = spots[1][1];
 			 		
-			 		Card c = p.hand[x];
-			 		
+			 		//Card c = p.hand[x];
+			 		Card c = p.handList.get(x);
 			 		markCard(c, first, second);
 				}
 				});
 		}
 	}
-	
+	*/
 	public static void updateBoard()
 	{
 		for (int i = 0; i < 10; i++)
@@ -96,7 +143,7 @@ public class Game
 						
 						// Draw new card from deck, replaces selected card from hand
 						// Should update GUI from within function
-						p.hand = p.drawCard(index);
+						p.drawCard(index);
 						
 						// Prevent user from selecting another card
 						unmarkAll();
@@ -202,8 +249,9 @@ public class Game
 	// Update GUI
 	public static void humanTurn()
 	{
-		updateHand();
-		updateBoard();
+		enableDeck();
+		//updateHand();
+		//updateBoard();
 	}
 	
 	// CPU stuff
@@ -237,11 +285,13 @@ public class Game
 		
 		
 		// Generate Deck (non-GUI)
+		enableDeck();
 		//Deck d = new Deck();
 		
 		// Player - the 1x6 grid of cards that show player's current hand
 		
 		//Player p = new Player(d.generateHand());
+		p.makeHand(d.generateHand());
 		p.setLayout(new GridLayout(1,6));
 		p.setBorder(BorderFactory.createMatteBorder(8, 8, 8, 8, Color.BLACK));
 		
@@ -253,11 +303,9 @@ public class Game
 		
 
 		// Add action listener for every button in Hand
+		//updateHand();
 		
-		updateHand();
-		
-		// Add ActionListener for every BoardCard
-		
+		// Add ActionListener for every BoardCard - only needs to be called once
 		updateBoard();
 		
 		/***** LOGIC *****/
