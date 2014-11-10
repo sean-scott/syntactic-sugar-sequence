@@ -26,11 +26,14 @@ public class Game
 	
 	public static void findCard(int index)
 	{
+		
+		int cardsLeft = d.getDeck().size();
+		System.out.println("Cards left in Deck: " + cardsLeft);
 		// Initialize new Deck to make compiler happy
 		Deck myD = new Deck();
 		
 		// Find the two spots on the Board where the chosen card is
-		int spots[][] = Board.indexOf(myD.deck.get(index));
+		int spots[][] = Board.indexOf(myD.getDeck().get(index));
  		
  		// Simplifying spots[][]
  		int first[] = new int[2]; // location of first card
@@ -43,17 +46,23 @@ public class Game
  		second[1] = spots[1][1];
 
  		// Function to mark the cards on the Board
- 		Card c = myD.deck.get(index);
+ 		Card c = myD.getDeck().get(index);
  		markCard(c, first, second);
+ 		
+ 		// Removes extra cards created by Sean's tiny D - no longer needed but I thought this
+ 		// comment was funny.
+ 
+ 			
+
 	}
 	
 	public static void enableDeck()
 	{
-		for (int i = 0; i < 108; i++)
+		for (int i = 0; i < d.getDeck().size()-1; i++)
 		{
 			int x = i;
 			
-			d.deck.get(i).addActionListener(new ActionListener()
+			d.getDeck().get(i).addActionListener(new ActionListener()
 			{
 				@Override
 				public void actionPerformed(ActionEvent arg0) 
@@ -68,6 +77,7 @@ public class Game
 	
 	public static void updateBoard()
 	{
+		
 		for (int i = 0; i < 10; i++)
 		{
 			for (int j = 0; j < 10; j++)
@@ -114,7 +124,11 @@ public class Game
 						
 						// Draw new card from deck, replaces selected card from hand
 						// Should update GUI from within function
-						p.drawCard(index);
+		
+						p.drawCard(d.getDeck(), index);
+							
+				
+						
 						
 						// Prevent user from selecting another card
 						unmarkAll();
@@ -163,6 +177,7 @@ public class Game
  			{
  				b.board[second[0]][second[1]].mark();
  			}
+
  			
  			// Unmark anything that is not the 2 BoardCards that match what the card you selected in your hand
  			
@@ -246,13 +261,14 @@ public class Game
 
 		f.setLayout(new FlowLayout());
 		f.setSize(1000,1000);
+		f.getContentPane().setBackground(new Color(67,178,64));
 		f.setResizable(false);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		// Board - the 10x10 grid of cards to make a sequence
 
 		b.setLayout(new GridLayout(10,10));
-		b.setBorder(BorderFactory.createMatteBorder(8, 8, 8, 8, Color.GRAY));
+		b.setBorder(BorderFactory.createBevelBorder(1, Color.BLACK, Color.GRAY));
 		
 		
 		// Enable ActionListener for Deck (will be called with every Human Turn
@@ -262,7 +278,7 @@ public class Game
 		
 		p.makeHand(d.generateHand());
 		p.setLayout(new GridLayout(1,6));
-		p.setBorder(BorderFactory.createMatteBorder(8, 8, 8, 8, Color.BLACK));
+		p.setBorder(BorderFactory.createBevelBorder(1, Color.BLACK, Color.GRAY));
 		
 		// Adding everything to Frame
 		
@@ -273,4 +289,13 @@ public class Game
 		// Add ActionListener for every BoardCard - only needs to be called once
 		updateBoard();
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	// hey
 }
