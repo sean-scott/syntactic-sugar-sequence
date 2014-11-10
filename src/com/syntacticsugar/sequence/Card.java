@@ -12,6 +12,7 @@ public class Card extends JButton {
 	
 	private String name;
 	private String suit;
+	private int numPicked = 0;
 	
 	public boolean selected; // Allows user to clearly see what card is currently in use
 
@@ -170,6 +171,21 @@ public class Card extends JButton {
 		}
 		
 		setPreferredSize(new Dimension(90,130));
+	}
+	
+	public void incrementNumPicked(){
+		
+		numPicked++;
+		
+		
+		
+	}
+	
+	public int getNumPicked(){
+		
+		return numPicked;
+		
+		
 	}
 	
 	

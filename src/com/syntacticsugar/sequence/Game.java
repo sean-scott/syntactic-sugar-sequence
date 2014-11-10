@@ -26,6 +26,9 @@ public class Game
 	
 	public static void findCard(int index)
 	{
+		
+		int size = Deck.deck.size();
+		System.out.println("INTIAL SIZE: " + size);
 		// Initialize new Deck to make compiler happy
 		Deck myD = new Deck();
 		
@@ -45,11 +48,19 @@ public class Game
  		// Function to mark the cards on the Board
  		Card c = myD.deck.get(index);
  		markCard(c, first, second);
+ 		
+ 		// Removes extra cards created by Sean's tiny D
+ 		System.out.println("NEW SIZE:" + Deck.deck.size());
+ 		for (int i=Deck.deck.size()-1; i >= size; i--){
+ 			System.out.println("REMOVING:" + i);
+ 			myD.removeCard(i);
+ 		}
+ 		
 	}
 	
 	public static void enableDeck()
 	{
-		for (int i = 0; i < 108; i++)
+		for (int i = 0; i < Deck.deck.size()-1; i++)
 		{
 			int x = i;
 			
@@ -68,6 +79,7 @@ public class Game
 	
 	public static void updateBoard()
 	{
+		
 		for (int i = 0; i < 10; i++)
 		{
 			for (int j = 0; j < 10; j++)
@@ -114,7 +126,11 @@ public class Game
 						
 						// Draw new card from deck, replaces selected card from hand
 						// Should update GUI from within function
+		
 						p.drawCard(index);
+							
+				
+						
 						
 						// Prevent user from selecting another card
 						unmarkAll();

@@ -31,7 +31,8 @@ public class Player extends JPanel
 	
 	public void removeCard(int index)
 	{
-		Deck.deck.remove(index); //Removes the card from the Deck list
+		System.out.print("Removed card:");
+		System.out.println(Deck.deck.set(index, null)); //Removes the card from the Deck list
 	}
 	
 	public int indexOf(BoardCard bc)
@@ -53,10 +54,16 @@ public class Player extends JPanel
 		
 		Random rand = new Random(System.currentTimeMillis());
  		
- 		int min = 0; int max = Deck.deck.size(); int randIndex;
- 		randIndex = rand.nextInt(max + 1) + min;
+ 		int min = 0; int max = Deck.deck.size()-1; int randIndex; boolean canBePicked = true;
+ 		
  		// Switch used card out with a new random Card from Deck
- 		handList.set(index, Deck.deck.get(randIndex));
+ 		
+
+ 			randIndex = rand.nextInt(max + 1) + min;
+
+ 				handList.set(index, Deck.deck.get(randIndex));
+ 				canBePicked = false;
+ 		
  		
  		/***** GUI *****/
  		
@@ -67,10 +74,15 @@ public class Player extends JPanel
 	 		add(handList.get(i));
 	 	}
 	 	
+	 	//removeCard(randIndex); //Why doesn't this shit work
+	 	
 	 	revalidate();
 	 	repaint();	
 	 	
-	 	// Deck.deck.remove(randIndex); Why doesn't this shit work
+	 	System.out.println("SIZE: " + Deck.deck.size());
+
+	 	
+	 	
 	 	
 	}
 }
