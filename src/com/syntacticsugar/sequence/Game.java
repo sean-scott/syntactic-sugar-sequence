@@ -28,13 +28,13 @@ public class Game
 	public static void findCard(int index)
 	{
 		
-		size = Deck.deck.size();
+		size = d.getDeck().size();
 		System.out.println("INTIAL SIZE: " + size);
 		// Initialize new Deck to make compiler happy
 		Deck myD = new Deck();
 		
 		// Find the two spots on the Board where the chosen card is
-		int spots[][] = Board.indexOf(myD.deck.get(index));
+		int spots[][] = Board.indexOf(myD.getDeck().get(index));
  		
  		// Simplifying spots[][]
  		int first[] = new int[2]; // location of first card
@@ -47,22 +47,23 @@ public class Game
  		second[1] = spots[1][1];
 
  		// Function to mark the cards on the Board
- 		Card c = myD.deck.get(index);
+ 		Card c = myD.getDeck().get(index);
  		markCard(c, first, second);
  		
- 		// Removes extra cards created by Sean's tiny D
- 			Deck.deck.subList(size, Deck.deck.size()).clear();
- 			System.out.println("NEW SIZE:" + Deck.deck.size());
+ 		// Removes extra cards created by Sean's tiny D - no longer needed but I thought this
+ 		// comment was funny.
+ 
+ 			System.out.println("NEW SIZE:" + d.getDeck().size());
 
 	}
 	
 	public static void enableDeck()
 	{
-		for (int i = 0; i < Deck.deck.size()-1; i++)
+		for (int i = 0; i < d.getDeck().size()-1; i++)
 		{
 			int x = i;
 			
-			d.deck.get(i).addActionListener(new ActionListener()
+			d.getDeck().get(i).addActionListener(new ActionListener()
 			{
 				@Override
 				public void actionPerformed(ActionEvent arg0) 
@@ -125,7 +126,7 @@ public class Game
 						// Draw new card from deck, replaces selected card from hand
 						// Should update GUI from within function
 		
-						p.drawCard(index);
+						p.drawCard(d.getDeck(), index);
 							
 				
 						

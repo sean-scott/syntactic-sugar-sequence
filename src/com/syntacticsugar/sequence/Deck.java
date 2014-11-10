@@ -6,7 +6,7 @@ import java.util.Random;
 public class Deck extends Card 
 {	
 	// 'deck' contains two full sets of cards, plus Jokers.
-	static ArrayList<Card> deck = new ArrayList<Card>();
+	public ArrayList<Card> deck = new ArrayList<Card>();
 
  	public Deck() 
  	{	
@@ -160,7 +160,7 @@ public class Deck extends Card
  		int i = 0; int numCards = 0;
  		while (numCards < 6)
  		{
- 			int min = 0; int max = Deck.deck.size();
+ 			int min = 0; int max = deck.size();
  			int randomCard = rand.nextInt(max + 1) + min;
 
  			if (!(deck.get(randomCard) == null))
@@ -180,5 +180,12 @@ public class Deck extends Card
  	public void removeCard(int index)
  	{
  		deck.remove(index);
+ 	}
+ 	
+ 	public ArrayList<Card> getDeck(){
+ 		
+ 		return deck;
+ 		
+ 		
  	}
 }

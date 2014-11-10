@@ -48,24 +48,23 @@ public class Player extends JPanel
 		return 0;
 	}
 
-	public void drawCard(int index)
+	public void drawCard(ArrayList<Card> deck, int index)
 	{ 
 		/***** LOGIC *****/
 		
 		Random rand = new Random(System.currentTimeMillis());
  		
- 		int min = 0; int max = Deck.deck.size()-1; int randIndex; boolean canBePicked = true;
+ 		int min = 0; int max = deck.size()-1; int randIndex; boolean canBePicked = true;
  		
  		// Switch used card out with a new random Card from Deck
  		
 
- 		do{
+
  			randIndex = rand.nextInt(max + 1) + min;
- 				handList.set(index, Deck.deck.get(randIndex));
+ 				handList.set(index, deck.get(randIndex));
+ 				deck.remove(randIndex);
  				canBePicked = false;
- 		}
- 		while (Deck.deck.get(randIndex).getNumPicked() >= 2);
- 		
+
  		
  		/***** GUI *****/
  		
@@ -81,7 +80,7 @@ public class Player extends JPanel
 	 	revalidate();
 	 	repaint();	
 
-	 	System.out.println("SIZE: " + Deck.deck.size());
+	 	System.out.println("SIZE: " + deck.size());
 	 	
 
 	 	
