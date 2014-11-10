@@ -261,13 +261,14 @@ public class Game
 
 		f.setLayout(new FlowLayout());
 		f.setSize(1000,1000);
+		f.getContentPane().setBackground(new Color(67,178,64));
 		f.setResizable(false);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		// Board - the 10x10 grid of cards to make a sequence
 
 		b.setLayout(new GridLayout(10,10));
-		b.setBorder(BorderFactory.createMatteBorder(8, 8, 8, 8, Color.GRAY));
+		b.setBorder(BorderFactory.createBevelBorder(1, Color.BLACK, Color.GRAY));
 		
 		
 		// Enable ActionListener for Deck (will be called with every Human Turn
@@ -277,7 +278,7 @@ public class Game
 		
 		p.makeHand(d.generateHand());
 		p.setLayout(new GridLayout(1,6));
-		p.setBorder(BorderFactory.createMatteBorder(8, 8, 8, 8, Color.BLACK));
+		p.setBorder(BorderFactory.createBevelBorder(1, Color.BLACK, Color.GRAY));
 		
 		// Adding everything to Frame
 		
