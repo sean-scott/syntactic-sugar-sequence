@@ -80,7 +80,7 @@ public class Player extends JPanel
 	 	revalidate();
 	 	repaint();	
 
-	 	System.out.println("SIZE: " + deck.size());
+
 	 	
 
 	 	

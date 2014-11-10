@@ -14,7 +14,6 @@ public class Game
 {
 	// GUI Elements
 	
-	static int size;
 	public static JFrame f = new JFrame("Sequence!");
 	public static Board b = new Board();
 	public static Deck d = new Deck();
@@ -28,8 +27,8 @@ public class Game
 	public static void findCard(int index)
 	{
 		
-		size = d.getDeck().size();
-		System.out.println("INTIAL SIZE: " + size);
+		int cardsLeft = d.getDeck().size();
+		System.out.println("Cards left in Deck: " + cardsLeft);
 		// Initialize new Deck to make compiler happy
 		Deck myD = new Deck();
 		
@@ -53,7 +52,7 @@ public class Game
  		// Removes extra cards created by Sean's tiny D - no longer needed but I thought this
  		// comment was funny.
  
- 			System.out.println("NEW SIZE:" + d.getDeck().size());
+ 			
 
 	}
 	
@@ -178,6 +177,7 @@ public class Game
  			{
  				b.board[second[0]][second[1]].mark();
  			}
+
  			
  			// Unmark anything that is not the 2 BoardCards that match what the card you selected in your hand
  			
@@ -288,4 +288,13 @@ public class Game
 		// Add ActionListener for every BoardCard - only needs to be called once
 		updateBoard();
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	// hey
 }
