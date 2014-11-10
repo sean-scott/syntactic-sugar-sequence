@@ -8,12 +8,16 @@ public class BoardCard extends Card
 	public boolean highlighted; // If true, highlights BoardCard
 	public boolean enabled; // If true, BoardCard can be selected
 	
+	private int player = 0;
+	
+	// Constructors
+	
 	public BoardCard()
 	{
 		super("", "");
 		highlighted = false;
 		enabled = true;
-		
+		player = 0; // no one has selected the card
 		
 	}
 	
@@ -23,12 +27,14 @@ public class BoardCard extends Card
 		super(n, s);
 		highlighted = h;
 		enabled = e;
-		setPreferredSize(new Dimension(65,65));
+		player = 0;
+		setPreferredSize(new Dimension(75,75));
 		setEnabled(e);
 		
 		if (h)
 		{
-			setBackground(Color.BLUE);
+			setBackground(Color.black);
+			setForeground(Color.white);
 			setEnabled(false);
 		}
 		
@@ -43,12 +49,30 @@ public class BoardCard extends Card
 		System.out.printf("Is this card enabled? %b\n", enabled);
 	}
 	
-	public void highlight()
+	public void highlight(int p)
 	{	
 		highlighted = true;
 		setEnabled(false);
-		setBackground(Color.BLUE);
+		player = p;
+		
+		if (p == 1)
+		{
+			setBackground(Color.BLUE);
+		}
+		else if (p == 2)
+		{
+			setBackground(Color.RED);
+		}
 	}
+	
+	// Accessors
+	
+	public int getOwner()
+	{
+		return player;
+	}
+	
+	// Functions
 	
 	public void mark()
 	{
@@ -60,9 +84,20 @@ public class BoardCard extends Card
 	{
 		setEnabled(false);
 		
-		if (highlighted)
+		if (highlighted && player == 1)
 		{
 			setBackground(Color.BLUE);
+		}
+		
+		else if (highlighted && player == 2)
+		{
+			setBackground(Color.RED);
+		}
+		
+		else if (highlighted && player == 0)
+		{
+			setBackground(Color.black);
+			setForeground(Color.white);
 		}
 		
 		else

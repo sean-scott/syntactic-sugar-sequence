@@ -96,7 +96,7 @@ public class Game
 						
 						// Highlight selected BoardCard
 						
-						b.board[x][y].highlight();
+						b.board[x][y].highlight(1);
 						
 						// Get index of selected BoardCard to replace card from hand
 						
@@ -225,13 +225,11 @@ public class Game
 	{
 		if (index == 0)
 		{
-			System.out.println("Human's turn");
 			humanTurn();
 		}
 		
 		else
 		{
-			System.out.println("Computer's turn");
 			computerTurn();
 		}
 	}
@@ -245,7 +243,7 @@ public class Game
 	// CPU stuff
 	public static void computerTurn()
 	{
-		System.out.println("CPU is done");
+		b.board[1][1].highlight(2); // testing highlight for player 2
 		turnIndex++;
 		turnIndex %= 2;
 		
@@ -283,7 +281,13 @@ public class Game
 		// Adding everything to Frame
 		
 		f.add(b);
-		f.add(p, BorderLayout.PAGE_END);		
+		// a line, maybe we don't need it, but it adds to the gui :P
+		JSeparator s = new JSeparator(SwingConstants.HORIZONTAL);
+		s.setBackground(Color.black);
+        s.setPreferredSize(new Dimension(600,3));  
+        f.add(s);
+        
+		f.add(p, BorderLayout.PAGE_END);
 		f.setVisible(true);
 		
 		// Add ActionListener for every BoardCard - only needs to be called once
