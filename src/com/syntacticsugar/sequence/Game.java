@@ -14,6 +14,7 @@ public class Game
 {
 	// GUI Elements
 	
+	static int size;
 	public static JFrame f = new JFrame("Sequence!");
 	public static Board b = new Board();
 	public static Deck d = new Deck();
@@ -27,7 +28,7 @@ public class Game
 	public static void findCard(int index)
 	{
 		
-		int size = Deck.deck.size();
+		size = Deck.deck.size();
 		System.out.println("INTIAL SIZE: " + size);
 		// Initialize new Deck to make compiler happy
 		Deck myD = new Deck();
@@ -50,12 +51,9 @@ public class Game
  		markCard(c, first, second);
  		
  		// Removes extra cards created by Sean's tiny D
- 		System.out.println("NEW SIZE:" + Deck.deck.size());
- 		for (int i=Deck.deck.size()-1; i >= size; i--){
- 			System.out.println("REMOVING:" + i);
- 			myD.removeCard(i);
- 		}
- 		
+ 			Deck.deck.subList(size, Deck.deck.size()).clear();
+ 			System.out.println("NEW SIZE:" + Deck.deck.size());
+
 	}
 	
 	public static void enableDeck()

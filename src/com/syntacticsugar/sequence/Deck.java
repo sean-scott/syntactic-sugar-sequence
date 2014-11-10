@@ -6,7 +6,7 @@ import java.util.Random;
 public class Deck extends Card 
 {	
 	// 'deck' contains two full sets of cards, plus Jokers.
-	static final List<Card> deck = new ArrayList<Card>();
+	static ArrayList<Card> deck = new ArrayList<Card>();
 
  	public Deck() 
  	{	
