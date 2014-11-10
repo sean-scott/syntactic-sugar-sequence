@@ -44,55 +44,66 @@ public class CPU extends Player {
 		}
 	}
 	
-	public boolean checkWin (Card c, BoardCard[][] b, String direction){
-		int row = 1, block = 0, i = 0 , j = 0;
+	public boolean checkWin (Card c, String direction){
+		int row = 1, block = 0;
+		int[][] indexes = Board.indexOf(c);
+		
 		//Row will count the sequence
 		//block will count the number of invalid spaces
 		//i and j are supposed to be the indexes
 		
-		while(row < 5 && block != 2 ){
+		for(int a = 0; a < 2; a++){
 			
-			//This is a reset
-			if(block > 0){
-				i = 0;
-				j = 0;
-			}
+			int i = indexes[a][0];
+			int j = indexes[a][1];
+			int iTemp = i;
+			int jTemp = j;
 			
-			//Check up then down
-			if(direction == "ud" && block == 0){
-				i++;
-			}else if (direction == "ud" && block != 0){
-				i--;
-				
-			//Check right then left	
-			}else if (direction == "rl" && block == 0){
-				j++;
-			}else if (direction == "rl"&& block != 0){
-				j--;
-				
-			//Check down-right then up-left
-			}else if (direction == "drul" && block == 0){
-				i++;
-				j++;
-			}else if (direction == "drul" && block != 0){
-				i--;
-				j--;
-				
-			//Check up-right then down-left	
-			}else if (direction == "urdl" && block == 0){
-				i--;
-				j++;
-			}else if (direction == "urdl" && block != 0){
-				i++;
-				j--;
-			}
+			while(row < 5 && block != 2 ){
 			
-			if(i < 0 || j < 0 || i > 9 || j > 9){
-				block ++;
-			}else if(b[i][j].highlighted == true){
-				row++;
-			}else{
-				block++;
+				//This is a reset
+				if(block > 0){
+					i = iTemp;
+					j = jTemp;
+				}
+			
+				//Check up then down
+				if(direction == "ud" && block == 0){
+					i++;
+				}else if (direction == "ud" && block != 0){
+					i--;
+				
+				//Check right then left	
+				}else if (direction == "rl" && block == 0){
+					j++;
+				}else if (direction == "rl"&& block != 0){
+					j--;
+				
+				//Check down-right then up-left
+				}else if (direction == "drul" && block == 0){
+					i++;
+					j++;
+				}else if (direction == "drul" && block != 0){
+					i--;
+					j--;
+				
+				//Check up-right then down-left	
+				}else if (direction == "urdl" && block == 0){
+					i--;
+					j++;
+				}else if (direction == "urdl" && block != 0){
+					i++;
+					j--;
+				}
+				
+				//Checks spot on the board if it is in bounds of array and highlighted correctly
+				if(i < 0 || j < 0 || i > 9 || j > 9){
+					block ++;
+				}else if(Board.board[i][j].highlighted == true){
+					row++;
+				}else{
+					block++;
+				}
 			}
 		}
 		
