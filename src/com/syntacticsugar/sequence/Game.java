@@ -181,7 +181,9 @@ public class Game
  				
  				System.out.println(cpuIndex);
 			
+ 				replaceDeadCard(cpu);
 				cpu.drawCard(d.getDeck(), cpuIndex);
+				
  			}
 
  			
@@ -256,7 +258,7 @@ public class Game
 						// Draw new card from deck, replaces selected card from hand
 						// Should update GUI from within function
 
-						replaceDeadCard();
+						replaceDeadCard(p);
 						p.drawCard(d.getDeck(), index);
 
 						
@@ -341,13 +343,13 @@ public class Game
 		changeTurn(turnIndex);
 	}
 	
-	public static void replaceDeadCard(){
+	public static void replaceDeadCard(Player myPlayer){
 		
 		// need Board, cpu.handlist, p.handlist
 
-		int deadIndex = d.returnDeadIndex(b, p.handList, cpu.handList);
+		int deadIndex = d.returnDeadIndex(b, myPlayer.handList);
 		if (deadIndex != -1)
-		p.drawCard(d.getDeck(), deadIndex);
+		myPlayer.drawCard(d.getDeck(), deadIndex);
 			
 
 		
