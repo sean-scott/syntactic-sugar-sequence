@@ -198,6 +198,8 @@ public class Board extends JPanel
  		return arr;
  	}
  	
+ 	// Checks if the given Card is able to be played
+ 	// Compares the Card to the two possible highlighted BoardCards to determine this
  	public boolean existsInHighlightedBoard(Card c){
  		
  		int count = 0;

@@ -200,6 +200,8 @@ public class Deck extends Card
  		return 0;
  	}
  	
+ 	// Returns index of dead cards - cards that have already been played twice
+ 	// Returns -1 if the card can be played - not really useful
  	public int returnDeadIndex(Board b, List<Card> hand){
  		
  		int index = -1;

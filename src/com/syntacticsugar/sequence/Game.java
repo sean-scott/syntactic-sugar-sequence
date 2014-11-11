@@ -343,6 +343,7 @@ public class Game
 		changeTurn(turnIndex);
 	}
 	
+	// Replaces dead cards - cards played twice
 	public static void replaceDeadCard(Player myPlayer){
 		
 		// need Board, cpu.handlist, p.handlist
