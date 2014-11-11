@@ -216,27 +216,4 @@ public class Board extends JPanel
  		return y;
  		
  	}
- 	/*
- 	// < openCard >
- 	//
- 	// Make BoardCard highlighted and enabled
- 	
- 	public static void openCard(int[][] arr)
- 	{
- 		int c1x = arr[0][0];
- 		int c1y = arr[0][1];
- 		
- 		int c2x = arr[1][0];
- 		int c2y = arr[1][1];
- 		
- 		board[c1x][c1y].highlighted = false;
- 		board[c1x][c1y].enabled = false;
- 		
- 		board[c2x][c2y].highlighted = true;
- 		board[c2x][c2y].enabled = false;
- 	}
- 	*/
-
- 	
- 	
 }

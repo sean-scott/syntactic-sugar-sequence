@@ -173,19 +173,35 @@ public class Card extends JButton {
 		setPreferredSize(new Dimension(90,130));
 	}
 	
-	public void incrementNumPicked(){
-		
+	public void incrementNumPicked()
+	{
 		numPicked++;
-		
-		
-		
 	}
 	
-	public int getNumPicked(){
-		
+	public int getNumPicked()
+	{
 		return numPicked;
+	}
+	
+	// equalsDeck - because "equals" only does BoardCard
+	// only used in Deck, so... that's why it's called that
+	
+	public boolean equalsDeck(Card c)
+	{
+		if (c == null)
+		{
+			return false;
+		}
 		
+		if (this.getName().equals(c.getName()) && this.getSuit().equals(c.getSuit()))
+		{
+			return true;
+		}
 		
+		else
+		{
+			return false;
+		}
 	}
 	
 	

@@ -54,17 +54,16 @@ public class Player extends JPanel
 		
 		Random rand = new Random(System.currentTimeMillis());
  		
- 		int min = 0; int max = deck.size()-1; int randIndex; boolean canBePicked = true;
+ 		int min = 0; 
+ 		int max = deck.size()-1;
+ 		int randIndex; 
+ 		boolean canBePicked = true; // ever used?
  		
  		// Switch used card out with a new random Card from Deck
- 		
-
-
- 			randIndex = rand.nextInt(max + 1) + min;
- 				handList.set(index, deck.get(randIndex));
- 				deck.remove(randIndex);
- 				canBePicked = false;
-
+ 		randIndex = rand.nextInt(max + 1) + min;
+ 		handList.set(index, deck.get(randIndex));
+ 		deck.remove(randIndex);
+ 		canBePicked = false;
  		
  		/***** GUI *****/
  		
@@ -74,17 +73,8 @@ public class Player extends JPanel
 	 	{
 	 		add(handList.get(i));
 	 	}
-	 	
-	 	//removeCard(randIndex); //Why doesn't this shit work
-	 	//Deck.deck.remove(randIndex);
+
 	 	revalidate();
 	 	repaint();	
-
-
-	 	
-
-	 	
-	 	
-	 	
 	}
 }

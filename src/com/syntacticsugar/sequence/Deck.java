@@ -185,7 +185,18 @@ public class Deck extends Card
  	public ArrayList<Card> getDeck(){
  		
  		return deck;
+ 	}
+
+ 	public int indexOf(Card c)
+ 	{	
+ 		for (int i = 0; i < deck.size(); i++)
+ 		{
+ 			if (c.equalsDeck(deck.get(i)))
+ 			{
+ 				return i;
+ 			}
+ 		}
  		
- 		
+ 		return 0;
  	}
 }
