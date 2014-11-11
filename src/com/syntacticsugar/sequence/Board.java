@@ -198,22 +198,24 @@ public class Board extends JPanel
  		return arr;
  	}
  	
- 	// Don't use these yet
- 	public static int indexOfX(){
- 		 
- 		int x = 0;
+ 	public boolean existsInHighlightedBoard(Card c){
+ 		
+ 		int count = 0;
+ 		for (int i=0; i < 10; i++)
+ 			for (int j=0; j < 10; j++)
+ 				if (c.getName() == board[i][j].getName() && c.getSuit() == board[i][j].getSuit() && board[i][j].highlighted){
+ 					count++;
+ 					System.out.println("PING " + count);
+ 					
+ 				}
+ 				
  		
  		
- 		return x;
  		
- 	}
- 	
- 	public static int indexOfY(){
- 		
- 		int y = 0;
- 		
- 		
- 		return y;
+ 		if (count >= 2)
+ 			return false;
+ 		else
+ 			return true;
  		
  	}
 }

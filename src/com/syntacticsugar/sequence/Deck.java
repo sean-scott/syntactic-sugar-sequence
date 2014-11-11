@@ -199,4 +199,23 @@ public class Deck extends Card
  		
  		return 0;
  	}
+ 	
+ 	public int returnDeadIndex(Board b, List<Card> humanHand, List<Card> cpuHand){
+ 		
+ 		int index = -1;
+ 		for (int i=0; i < humanHand.size(); i++)
+ 			if (deck.indexOf(humanHand.get(i)) == -1 && b.existsInHighlightedBoard(humanHand.get(i)) == false){
+ 					System.out.println("Dead card found!");
+ 					index = i;
+ 					
+ 					
+ 			}
+ 
+
+
+ 		
+ 		
+ 		return index;
+ 	}
+ 		
 }

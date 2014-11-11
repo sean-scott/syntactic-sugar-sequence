@@ -48,7 +48,7 @@ public class Player extends JPanel
 		return 0;
 	}
 
-	public void drawCard(ArrayList<Card> deck, int index)
+	public Card drawCard(ArrayList<Card> deck, int index)
 	{ 
 		/***** LOGIC *****/
 		
@@ -57,13 +57,13 @@ public class Player extends JPanel
  		int min = 0; 
  		int max = deck.size()-1;
  		int randIndex; 
- 		boolean canBePicked = true; // ever used?
  		
  		// Switch used card out with a new random Card from Deck
+ 		if (deck.size() > 0){
  		randIndex = rand.nextInt(max + 1) + min;
  		handList.set(index, deck.get(randIndex));
  		deck.remove(randIndex);
- 		canBePicked = false;
+
  		
  		/***** GUI *****/
  		
@@ -76,5 +76,8 @@ public class Player extends JPanel
 
 	 	revalidate();
 	 	repaint();	
+ 		}
+ 		
+	 	return handList.get(index);
 	}
 }

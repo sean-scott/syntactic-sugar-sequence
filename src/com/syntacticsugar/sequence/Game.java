@@ -58,7 +58,7 @@ public class Game
 	{
 		
 		int cardsLeft = d.getDeck().size();
-		System.out.println("Cards left in Deck: " + cardsLeft);
+		//System.out.println("Cards left in Deck: " + cardsLeft);
 		// Initialize new Deck to make compiler happy
 		Deck myD = new Deck();
 		
@@ -255,8 +255,10 @@ public class Game
 						
 						// Draw new card from deck, replaces selected card from hand
 						// Should update GUI from within function
-		
+
+						replaceDeadCard();
 						p.drawCard(d.getDeck(), index);
+
 						
 						// Prevent user from selecting another card
 						unmarkAll();
@@ -337,6 +339,20 @@ public class Game
 		turnIndex %= 2;
 		
 		changeTurn(turnIndex);
+	}
+	
+	public static void replaceDeadCard(){
+		
+		// need Board, cpu.handlist, p.handlist
+
+		int deadIndex = d.returnDeadIndex(b, p.handList, cpu.handList);
+		if (deadIndex != -1)
+		p.drawCard(d.getDeck(), deadIndex);
+			
+
+		
+		
+		
 	}
 	
 
