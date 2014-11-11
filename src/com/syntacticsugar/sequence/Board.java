@@ -204,9 +204,7 @@ public class Board extends JPanel
  		for (int i=0; i < 10; i++)
  			for (int j=0; j < 10; j++)
  				if (c.getName() == board[i][j].getName() && c.getSuit() == board[i][j].getSuit() && board[i][j].highlighted){
- 					count++;
- 					System.out.println("PING " + count);
- 					
+ 					count++; 					
  				}
  				
  		
