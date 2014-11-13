@@ -251,6 +251,7 @@ public class Game
 						else
 						{
 							index = p.indexOf(b.board[x][y]);
+							// does this work? YES
 						}
 						
 						System.out.println("Index returned: " + index);
