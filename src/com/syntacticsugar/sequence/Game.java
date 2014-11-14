@@ -37,7 +37,7 @@ public class Game
 	{
 		for (int i = 0; i < d.getDeck().size()-1; i++)
 		{
-			int x = i;
+			final int x = i;
 			
 			d.getDeck().get(i).addActionListener(new ActionListener()
 			{
@@ -215,8 +215,8 @@ public class Game
 		{
 			for (int j = 0; j < 10; j++)
 			{
-				int x = i;
-				int y = j;
+				final int x = i;
+				final int y = j;
 				
 				b.board[i][j].addActionListener(new ActionListener()
 				{
@@ -230,7 +230,8 @@ public class Game
 						// Highlight selected BoardCard
 						
 						b.board[x][y].highlight(1);
-						
+						checkWin(1,x,y);
+				
 						// Get index of selected BoardCard to replace card from hand
 						
 						int index = 0;
@@ -258,7 +259,7 @@ public class Game
 						
 						// Draw new card from deck, replaces selected card from hand
 						// Should update GUI from within function
-
+						
 						replaceDeadCard(p);
 						p.drawCard(d.getDeck(), index);
 
@@ -359,6 +360,97 @@ public class Game
 		
 	}
 	
+	public static void checkWin (int p, int x, int y){
+		int row = 1, block = 0; // Row is the number of spaces correctly highlighted, block is how many times method detects an incorrect highlight
+		int i = x; //Reference
+		int j = y; //Reference
+		String directions[] = {"ud","rl","drul","urdl"}; //Directions
+		boolean done = false; //This was important when the method returned a boolean
+		int a = 0; //determines which direction is referenced, possibly don't need the array above is this is in play
+		
+		while(done == false && a < 4){
+			
+			String direction = directions[a];
+			System.out.println(direction);
+			//Will reset row and block after every iteration of the while loop below
+			row = 1;
+			block = 0;
+			i = x;
+			j = y;
+			
+			while(row < 5 && block < 3 ){
+			
+				//This is a reset
+				if(block > 0 && block != 2){
+					block++;
+					i = x;
+					j = y;
+					System.out.println("reset");
+				}
+			
+				//increment up then down
+				if(direction == "ud" && block == 0){
+					i++;
+					System.out.println("down");
+				}else if (direction == "ud" && block != 0){
+					i--;
+					System.out.println("up");
+					
+				//increment right then left	
+				}else if (direction == "rl" && block == 0){
+					j++;
+					System.out.println("right");
+					
+				}else if (direction == "rl"&& block != 0){
+					j--;
+					System.out.println("left");
+				
+				//increment down-right then up-left
+				}else if (direction == "drul" && block == 0){
+					i++;
+					j++;
+					System.out.println("down right");
+					
+				}else if (direction == "drul" && block != 0){
+					i--;
+					j--;
+					System.out.println("up left");
+				
+				//increment up-right then down-left	
+				}else if (direction == "urdl" && block == 0){
+					i--;
+					j++;
+					System.out.println("up right");
+					
+				}else if (direction == "urdl" && block != 0){
+					i++;
+					j--;
+					System.out.println("down left");
+				}
+				
+				//Checks spot on the board if it is in bounds of array and highlighted correctly
+				if(i < 0 || j < 0 || i > 9 || j > 9){
+					block ++;
+					System.out.println("block out of bounds");
+				}else if(Board.board[i][j].getOwner() == p){
+					row++;
+					System.out.println("sequence+");
+				}else{
+					block++;
+					System.out.println("block");
+				}
+				
+				//Before break it says that the person won
+				if(row == 5){
+					done = true;
+					System.out.println("win");
+				}
+			}
+			
+			a++;
+		}
+		
+	}
 
 	public static void main(String[] args) 
 	{
