@@ -121,6 +121,7 @@ public class Game
  				}
  				
  				b.board[randX][randY].highlight(2);
+ 				checkWin(2, randX, randY);
  				
  				System.out.println("YO I JUST PICKED A RANDOM CARD WHAT GIVES");
 				
@@ -167,6 +168,7 @@ public class Game
  					System.out.println("PICKING SECOND");
  					c.printCard();
  					b.board[second[0]][second[1]].highlight(2);
+ 					checkWin(2, second[0], second[1]);
  					
  					cpuIndex = cpu.indexOf(b.board[second[0]][second[1]]);
  				}
@@ -175,6 +177,7 @@ public class Game
  					System.out.println("PICKING FIRST");
  					c.printCard();
  					b.board[first[0]][first[1]].highlight(2);
+ 					checkWin(2, first[0], first[1]);
  					
  					cpuIndex = cpu.indexOf(b.board[first[0]][first[1]]);
  				}
@@ -444,6 +447,16 @@ public class Game
 				if(row == 5){
 					done = true;
 					System.out.println("win");
+					
+					if (p == 1)
+					{
+						JOptionPane.showMessageDialog(f, "You win!");
+					}
+					
+					else
+					{
+						JOptionPane.showMessageDialog(f, "You lose...");
+					}
 				}
 			}
 			
