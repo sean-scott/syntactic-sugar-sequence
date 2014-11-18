@@ -22,8 +22,8 @@ public class Menu extends JFrame{
 	{
 		JPanel panel = new JPanel();
 		
-		panel.setBorder(BorderFactory.createEmptyBorder(100, 100, 100, 100));
-        panel.setLayout(new GridLayout(1, 4, 100, 100));
+		panel.setBorder(BorderFactory.createEmptyBorder(500, 250, 100, 250));
+        panel.setLayout(new GridLayout(2, 4, 200, 25));
         
         //button 1 is for 1 player
         button1 = new JButton("Start");
