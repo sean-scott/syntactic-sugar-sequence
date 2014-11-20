@@ -320,6 +320,10 @@ public class Game
 	public static void humanTurn()
 	{
 		enableDeck();
+		Board.board[0][0].setOwner(1);
+		Board.board[0][9].setOwner(1);
+		Board.board[9][0].setOwner(1);
+		Board.board[9][9].setOwner(1);
 	}
 	
 	// CPU stuff
@@ -371,10 +375,15 @@ public class Game
 		boolean done = false; //This was important when the method returned a boolean
 		int a = 0; //determines which direction is referenced, possibly don't need the array above is this is in play
 		
+		Board.board[0][0].setOwner(p);
+		Board.board[0][9].setOwner(p);
+		Board.board[9][0].setOwner(p);
+		Board.board[9][9].setOwner(p);
+		
 		while(done == false && a < 4){
 			
 			String direction = directions[a];
-			System.out.println(direction);
+			//System.out.println(direction);
 			//Will reset row and block after every iteration of the while loop below
 			row = 1;
 			block = 0;
@@ -388,7 +397,7 @@ public class Game
 					block++;
 					i = x;
 					j = y;
-					System.out.println("reset");
+					//System.out.println("reset");
 				}
 			
 				//increment up then down
@@ -397,56 +406,56 @@ public class Game
 					System.out.println("down");
 				}else if (direction == "ud" && block != 0){
 					i--;
-					System.out.println("up");
+					//System.out.println("up");
 					
 				//increment right then left	
 				}else if (direction == "rl" && block == 0){
 					j++;
-					System.out.println("right");
+					//System.out.println("right");
 					
 				}else if (direction == "rl"&& block != 0){
 					j--;
-					System.out.println("left");
+					//System.out.println("left");
 				
 				//increment down-right then up-left
 				}else if (direction == "drul" && block == 0){
 					i++;
 					j++;
-					System.out.println("down right");
+					//System.out.println("down right");
 					
 				}else if (direction == "drul" && block != 0){
 					i--;
 					j--;
-					System.out.println("up left");
+					//System.out.println("up left");
 				
 				//increment up-right then down-left	
 				}else if (direction == "urdl" && block == 0){
 					i--;
 					j++;
-					System.out.println("up right");
+					//System.out.println("up right");
 					
 				}else if (direction == "urdl" && block != 0){
 					i++;
 					j--;
-					System.out.println("down left");
+					//System.out.println("down left");
 				}
 				
 				//Checks spot on the board if it is in bounds of array and highlighted correctly
 				if(i < 0 || j < 0 || i > 9 || j > 9){
 					block ++;
-					System.out.println("block out of bounds");
+					//System.out.println("block out of bounds");
 				}else if(Board.board[i][j].getOwner() == p){
 					row++;
-					System.out.println("sequence+");
+					//System.out.println("sequence+");
 				}else{
 					block++;
-					System.out.println("block");
+					//System.out.println("block");
 				}
 				
 				//Before break it says that the person won
 				if(row == 5){
 					done = true;
-					System.out.println("win");
+					//System.out.println("win");
 					
 					if (p == 1)
 					{
@@ -462,6 +471,11 @@ public class Game
 			
 			a++;
 		}
+		
+		Board.board[0][0].setOwner(0);
+		Board.board[0][9].setOwner(0);
+		Board.board[9][0].setOwner(0);
+		Board.board[9][9].setOwner(0);
 		
 	}
 

@@ -65,6 +65,11 @@ public class BoardCard extends Card
 		}
 	}
 	
+	public void setOwner(int x)
+	{
+		player = x;
+	}
+	
 	// Accessors
 	
 	public int getOwner()
