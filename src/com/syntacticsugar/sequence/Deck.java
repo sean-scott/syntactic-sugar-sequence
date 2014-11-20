@@ -160,7 +160,7 @@ public class Deck extends Card
  		while (numCards < 6)
  		{
  			int min = 0; int max = deck.size();
- 			int randomCard = rand.nextInt(max + 1) + min;
+ 			int randomCard = rand.nextInt(max) + min;
 
  			if (!(deck.get(randomCard) == null))
  			{
