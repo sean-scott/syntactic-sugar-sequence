@@ -1,5 +1,8 @@
 package com.syntacticsugar.sequence;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,11 +25,13 @@ public class Menu extends JFrame{
 	}
 	
 	public final void initUI()
-	{
-		JPanel panel = new JPanel();
-		panel.setBorder(BorderFactory.createEmptyBorder(500, 250, 100, 250));
-        panel.setLayout(new GridLayout(2, 4, 200, 25));
-        
+	{	
+		JPanel panel = new JPanel(); // parent container
+		panel.setBorder(BorderFactory.createEmptyBorder(350, 100, 100, 100));
+		panel.setLayout(new FlowLayout(FlowLayout.CENTER));
+		JPanel gridOfButtons = new JPanel(); // so buttons line up
+		gridOfButtons.setLayout(new GridLayout(2,1));
+		
         JLabel label = new JLabel();
         ImageIcon logo;
         logo = new ImageIcon(this.getClass().getResource("logo.gif"));
@@ -34,6 +39,7 @@ public class Menu extends JFrame{
         
         //button 1 is for 1 player
         button1 = new JButton("Start");
+        button1.setPreferredSize(new Dimension(300, 40));
         button1.addActionListener((new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {
@@ -45,6 +51,7 @@ public class Menu extends JFrame{
         
         //button 2 is for 2
         button2 = new JButton("Exit");
+        button2.setPreferredSize(new Dimension(300, 40));
         button2.addActionListener((new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {
@@ -55,16 +62,20 @@ public class Menu extends JFrame{
             }
         }));
 
-        panel.add(button1);
-        panel.add(button2);
+        panel.add(label);
+        
+        gridOfButtons.add(button1);
+        gridOfButtons.add(button2);
+        panel.add(gridOfButtons);
 
         add(panel);
-        add(label); // This overwrites Lajom's buttons for some reason
 
         setTitle("Sequence");
         setSize(1000, 1000);
+        setBackground(new Color(5,10,100));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+        setVisible(true);
 	}
 	
 	public static void main(String[] args) {
