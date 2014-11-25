@@ -5,6 +5,8 @@ import java.awt.GridLayout;
 
 
 
+
+
 import javax.swing.*;
 
 import java.awt.*;
@@ -460,11 +462,13 @@ public class Game
 					if (p == 1)
 					{
 						JOptionPane.showMessageDialog(f, "You win!");
+						System.exit(0);
 					}
 					
 					else
 					{
 						JOptionPane.showMessageDialog(f, "You lose...");
+						System.exit(0);
 					}
 				}
 			}
