@@ -1,7 +1,6 @@
 package com.syntacticsugar.sequence;
 
 import java.awt.GridLayout;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -24,11 +23,14 @@ public class Menu extends JFrame{
 	
 	public final void initUI()
 	{
-		ImageIcon ImageIcon = new ImageIcon("logo.jpg");
-		JLabel label = new JLabel(ImageIcon);
 		JPanel panel = new JPanel();
 		panel.setBorder(BorderFactory.createEmptyBorder(500, 250, 100, 250));
         panel.setLayout(new GridLayout(2, 4, 200, 25));
+        
+        JLabel label = new JLabel();
+        ImageIcon logo;
+        logo = new ImageIcon(this.getClass().getResource("logo.gif"));
+        label.setIcon(logo);
         
         //button 1 is for 1 player
         button1 = new JButton("Start");
@@ -53,13 +55,13 @@ public class Menu extends JFrame{
             }
         }));
 
-        add(label);
         panel.add(button1);
         panel.add(button2);
 
         add(panel);
+        add(label); // This overwrites Lajom's buttons for some reason
 
-        setTitle("GridLayout");
+        setTitle("Sequence");
         setSize(1000, 1000);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
