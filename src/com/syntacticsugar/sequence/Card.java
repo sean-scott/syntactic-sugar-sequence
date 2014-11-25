@@ -13,7 +13,6 @@ public class Card extends JButton {
 	private String name;
 	private String suit;
 	private int numPicked = 0;
-	
 	public boolean selected; // Allows user to clearly see what card is currently in use
 
 	public Card()
@@ -185,7 +184,6 @@ public class Card extends JButton {
 	
 	// equalsDeck - because "equals" only does BoardCard
 	// only used in Deck, so... that's why it's called that
-	
 	public boolean equalsDeck(Card c)
 	{
 		if (c == null)
