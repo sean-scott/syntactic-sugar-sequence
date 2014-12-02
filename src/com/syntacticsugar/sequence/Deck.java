@@ -136,17 +136,6 @@ public class Deck extends Card
  		deck.add(new Card("J", "Spades"));
  		deck.add(new Card("Q", "Spades"));
  		deck.add(new Card("K", "Spades"));
- 		/*
- 		// Jokers - 1
- 		
- 		deck.add(new Card("Joker", "One"));
- 		deck.add(new Card("Joker", "Two"));
- 	
- 		// Jokers - 2
- 		
- 		deck.add(new Card("Joker", "One"));
- 		deck.add(new Card("Joker", "Two"));
- 		*/
  	}
  	
  	// Generates a Hand of six from the Deck for the Player
@@ -206,15 +195,10 @@ public class Deck extends Card
  		int index = -1;
  		for (int i=0; i < hand.size(); i++)
  			if (deck.indexOf(hand.get(i)) == -1 && b.existsInHighlightedBoard(hand.get(i)) == false){
- 					System.out.println("Dead card found!");
  					index = i;
  					
  					
  			}
- 
-
-
- 		
  		
  		return index;
  	}

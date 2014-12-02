@@ -38,26 +38,6 @@ public class Card extends JButton {
 		{
 			setEnabled(false);
 		}
-		
-		// Set enabled state based on card selected from deck
-		
-		
-			// Everything disabled at start
-			// specific cards enabled upon clicking a card in Hand
-		
-		
-		// Console output for now, more later...
-		/*
-		addActionListener(new ActionListener() 
-		{
-            public void actionPerformed(ActionEvent e)
-            {
-                // When clicked how name and suit
-                System.out.println("You selected the " + n + " of " + suit);
-                selectCard();
-            }
-        });
-        */
 	}
 	
 	// Set/Get 'name'
@@ -111,16 +91,6 @@ public class Card extends JButton {
 		else
 		{
 			value = name;
-		}
-		
-		if (value.equals(""))
-		{
-			System.out.println("Free");
-		}
-		
-		else
-		{
-			System.out.println(value + " of " + suit);
 		}
 	}
 	

@@ -45,8 +45,6 @@ public class BoardCard extends Card
 	public void printCard()
 	{
 		super.printCard();
-		System.out.printf("Has it already been selected? %b\n", highlighted);
-		System.out.printf("Is this card enabled? %b\n", enabled);
 	}
 	
 	public void highlight(int p)

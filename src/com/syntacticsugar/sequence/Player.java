@@ -29,12 +29,6 @@ public class Player extends JPanel
 		}
 	}
 	
-	public void removeCard(int index)
-	{
-		System.out.print("Removed card:");
-		//System.out.println(Deck.deck.set(index, null)); //Removes the card from the Deck list
-	}
-	
 	public int indexOf(BoardCard bc)
 	{
 		for (int i=0; i < 6; i++)

@@ -60,7 +60,6 @@ public class Game
 	{
 		
 		int cardsLeft = d.getDeck().size();
-		//System.out.println("Cards left in Deck: " + cardsLeft);
 		// Initialize new Deck to make compiler happy
 		Deck myD = new Deck();
 		
@@ -124,9 +123,7 @@ public class Game
  				
  				b.board[randX][randY].highlight(2);
  				checkWin(2, randX, randY);
- 				
- 				System.out.println("YO I JUST PICKED A RANDOM CARD WHAT GIVES");
-				
+ 								
  				// Find Jack
 				for (int i = 0; i < 6; i++)
 				{
@@ -167,7 +164,6 @@ public class Game
  				
  				if (b.board[first[0]][first[1]].highlighted)
  				{
- 					System.out.println("PICKING SECOND");
  					c.printCard();
  					b.board[second[0]][second[1]].highlight(2);
  					checkWin(2, second[0], second[1]);
@@ -176,15 +172,12 @@ public class Game
  				}
  				else
  				{
- 					System.out.println("PICKING FIRST");
  					c.printCard();
  					b.board[first[0]][first[1]].highlight(2);
  					checkWin(2, first[0], first[1]);
  					
  					cpuIndex = cpu.indexOf(b.board[first[0]][first[1]]);
  				}
- 				
- 				System.out.println(cpuIndex);
 			
  				replaceDeadCard(cpu);
 				cpu.drawCard(d.getDeck(), cpuIndex);
@@ -230,8 +223,6 @@ public class Game
 					@Override
 					public void actionPerformed(ActionEvent e) 
 					{	
-						System.out.println("Action performed");
-						
 						// Highlight selected BoardCard
 						
 						b.board[x][y].highlight(1);
@@ -259,8 +250,6 @@ public class Game
 							index = p.indexOf(b.board[x][y]);
 							// does this work? YES
 						}
-						
-						System.out.println("Index returned: " + index);
 						
 						// Draw new card from deck, replaces selected card from hand
 						// Should update GUI from within function
@@ -339,12 +328,10 @@ public class Game
  		// Equivalent of human clicking card in hand
  		int index = rand.nextInt(max + 1) + min;
  		
- 		System.out.print("CPU's hand at: " + index + " is: ");
  		cpu.handList.get(index).printCard();
  		
  		// Have to find the hand's card in the deck for findCard
  		int deckIndex = d.indexOf(cpu.handList.get(index));
- 		System.out.println("Located at: " + deckIndex);
  		
  		findCard(deckIndex, 2); // CPU = player 2
  		
@@ -385,7 +372,7 @@ public class Game
 		while(done == false && a < 4){
 			
 			String direction = directions[a];
-			//System.out.println(direction);
+			
 			//Will reset row and block after every iteration of the while loop below
 			row = 1;
 			block = 0;
@@ -399,65 +386,52 @@ public class Game
 					block++;
 					i = x;
 					j = y;
-					//System.out.println("reset");
 				}
 			
 				//increment up then down
 				if(direction == "ud" && block == 0){
 					i++;
-					System.out.println("down");
 				}else if (direction == "ud" && block != 0){
 					i--;
-					//System.out.println("up");
 					
 				//increment right then left	
 				}else if (direction == "rl" && block == 0){
 					j++;
-					//System.out.println("right");
 					
 				}else if (direction == "rl"&& block != 0){
 					j--;
-					//System.out.println("left");
 				
 				//increment down-right then up-left
 				}else if (direction == "drul" && block == 0){
 					i++;
 					j++;
-					//System.out.println("down right");
 					
 				}else if (direction == "drul" && block != 0){
 					i--;
 					j--;
-					//System.out.println("up left");
 				
 				//increment up-right then down-left	
 				}else if (direction == "urdl" && block == 0){
 					i--;
 					j++;
-					//System.out.println("up right");
 					
 				}else if (direction == "urdl" && block != 0){
 					i++;
 					j--;
-					//System.out.println("down left");
 				}
 				
 				//Checks spot on the board if it is in bounds of array and highlighted correctly
 				if(i < 0 || j < 0 || i > 9 || j > 9){
 					block ++;
-					//System.out.println("block out of bounds");
 				}else if(Board.board[i][j].getOwner() == p){
 					row++;
-					//System.out.println("sequence+");
 				}else{
 					block++;
-					//System.out.println("block");
 				}
 				
 				//Before break it says that the person won
 				if(row == 5){
 					done = true;
-					//System.out.println("win");
 					
 					if (p == 1)
 					{
